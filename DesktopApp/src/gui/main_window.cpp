@@ -32,8 +32,7 @@ MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent), ui_(nullptr), engine_(nullptr) {
     LOG_INFO("Creating MainWindow");
 
-    // Create simulation engine
-    Application::instance()->engine()->initialize();
+    // Get the already initialized engine from Application
     engine_ = Application::instance()->engine();
 
     setupUI();
