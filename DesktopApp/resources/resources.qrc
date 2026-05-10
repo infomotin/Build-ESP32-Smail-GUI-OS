@@ -1,0 +1,13 @@
+<!-- ESP32 Virtual Simulator Resources -->
+<RCC>
+    <qresource prefix="/icons">
+        <file>icons/led_off.png</file>
+        <file>icons/led_on.png</file>
+        <file>icons/button_up.png</file>
+        <file>icons/button_down.png</file>
+        <file>icons/pin.png</file>
+        <file>icons/run.png</file>
+        <file>icons/pause.png</file>
+        <file>icons/stop.png</file>
+    </qresource>
+</RCC>

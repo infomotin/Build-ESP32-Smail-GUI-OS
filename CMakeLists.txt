@@ -6,6 +6,10 @@ include($ENV{IDF_PATH}/tools/cmake/project.cmake)
 # Project definition
 project(esp32_small_os)
 
+# Option to build Desktop Simulator
+option(BUILD_DESKTOP_SIMULATOR "Build the ESP32 Virtual Hardware Desktop Simulator" OFF)
+option(BUILD_DESKTOP_SIMULATOR_QT6 "Use Qt6 for desktop simulator (requires Qt6)" ON)
+
 # Compiler flags
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -O2 -ffunction-sections -fdata-sections")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -O2 -ffunction-sections -fdata-sections")
@@ -69,5 +73,11 @@ idf_component_register(
         esp_system
         esp_event
         esp_http_server
-        esp_http_client
-)
+         esp_http_client
+     )
+
+# Optional Desktop Simulator
+if(BUILD_DESKTOP_SIMULATOR)
+    message(STATUS "Desktop simulator build enabled")
+    add_subdirectory(DesktopApp)
+endif()
