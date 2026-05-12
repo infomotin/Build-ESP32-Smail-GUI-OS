@@ -12,9 +12,11 @@
 #include <QTabWidget>
 #include <QDockWidget>
 #include <QTimer>
+#include <QCloseEvent>
 #include <memory>
 
 #include "simulation_engine.h"
+#include "peripherals/gpio_controller.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -31,6 +33,7 @@ class Oscilloscope;
 class DebugPanel;
 class PropertiesPanel;
 class SimulationControlBar;
+class VirtualComponent;
 
 /**
  * @class MainWindow
@@ -139,15 +142,20 @@ public slots:
      */
     void showAbout();
 
-    /**
-     * @brief Show settings dialog
-     */
-    void showSettings();
+     /**
+      * @brief Show settings dialog
+      */
+     void showSettings();
 
-    /**
-     * @brief Update status bar
-     */
-    void updateStatus(const QString& message);
+     /**
+      * @brief Select all components
+      */
+     void selectAll();
+
+     /**
+      * @brief Update status bar
+      */
+     void updateStatus();
 
     /**
      * @brief Handle firmware loaded event
@@ -169,6 +177,24 @@ private slots:
      * @brief Handle pin state change from engine
      */
     void onPinStateChanged(uint8_t pin, GPIOLevel level);
+
+    /**
+     * @brief Pin clicked on pinout panel
+     */
+    void onPinSelection(int pin, QPoint global_pos);
+
+    /**
+     * @brief Context menu requested on pin
+     */
+    void onPinContextMenu(int pin, QPoint global_pos);
+
+    /**
+     * @brief Component added to workspace
+     */
+    void onComponentAdded(VirtualComponent* component);
+
+protected:
+    void closeEvent(QCloseEvent* event) override;
 
 private:
     void createMenus();

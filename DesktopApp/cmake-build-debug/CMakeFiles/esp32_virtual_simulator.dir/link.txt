@@ -1,0 +1,3 @@
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\esp32_virtual_simulator.dir/objects.a
+C:\Qt\Tools\mingw1310_64\bin\ar.exe qc CMakeFiles\esp32_virtual_simulator.dir/objects.a @CMakeFiles\esp32_virtual_simulator.dir\objects1.rsp
+C:\Qt\Tools\mingw1310_64\bin\c++.exe  -Wall -Wextra -g -g -O0 -DDEBUG -mwindows -Wl,--whole-archive CMakeFiles\esp32_virtual_simulator.dir/objects.a -Wl,--no-whole-archive -o esp32_virtual_simulator.exe -Wl,--out-implib,libesp32_virtual_simulator.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\esp32_virtual_simulator.dir\linkLibs.rsp

@@ -5,6 +5,7 @@
 #include <string>
 #include <memory>
 #include <map>
+#include <functional>
 
 // ELF constants
 #define ELF_MAGIC 0x464C457F  // "\x7FELF"
@@ -17,28 +18,28 @@
 #define SHT_NOBITS 8           // BSS section
 
 // ELF file header (32-bit)
-struct Elf32Header {
-    uint32_t e_magic;
-    uint8_t  e_class;
-    uint8_t  e_data;
-    uint8_t  e_version;
-    uint8_t  e_osabi;
-    uint8_t  e_abiversion;
-    uint8_t  e_pad[7];
-    uint16_t e_type;
-    uint16_t e_machine;
-    uint32_t e_version;
-    uint32_t e_entry;
-    uint32_t e_phoff;
-    uint32_t e_shoff;
-    uint32_t e_flags;
-    uint16_t e_ehsize;
-    uint16_t e_phentsize;
-    uint16_t e_phnum;
-    uint16_t e_shentsize;
-    uint16_t e_shnum;
-    uint16_t e_shstrndx;
-};
+ struct Elf32Header {
+     uint32_t e_magic;
+     uint8_t  e_class;
+     uint8_t  e_data;
+     uint8_t  e_ident_version;  // EI_VERSION byte from e_ident
+     uint8_t  e_osabi;
+     uint8_t  e_abiversion;
+     uint8_t  e_pad[7];
+     uint16_t e_type;
+     uint16_t e_machine;
+     uint32_t e_version;  // Object file version (must be 1)
+     uint32_t e_entry;
+     uint32_t e_phoff;
+     uint32_t e_shoff;
+     uint32_t e_flags;
+     uint16_t e_ehsize;
+     uint16_t e_phentsize;
+     uint16_t e_phnum;
+     uint16_t e_shentsize;
+     uint16_t e_shnum;
+     uint16_t e_shstrndx;
+ };
 
 // ELF program header (32-bit)
 struct Elf32ProgramHeader {

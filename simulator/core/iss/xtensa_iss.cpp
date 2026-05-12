@@ -4,6 +4,14 @@
 #include <iostream>
 #include <iomanip>
 #include <stdexcept>
+#include <cstring>
+
+// Helper: sign-extend a 24-bit value stored in lower 24 bits of uint32_t
+static inline int32_t sign_extend_24(uint32_t val) {
+    val &= 0xFFFFFF;
+    // Shift left 8 then arithmetic right shift 8 to sign-extend from 24 bits
+    return static_cast<int32_t>((val << 8) >> 8);
+}
 
 XtensaISS::XtensaISS(MemoryModel* memory, EventScheduler* scheduler)
     : memory(memory), scheduler(scheduler), state(ProcessorState::HALTED),
@@ -399,7 +407,7 @@ void XtensaISS::execute_jump_instruction(uint32_t instruction) {
     switch (opcode) {
         case 0x0C: // J
             {
-                int32_t offset = (int32_t)(int24_t)get_imm24(instruction);
+                int32_t offset = sign_extend_24(get_imm24(instruction));
                 registers[XTENSA_PC] += offset * 4;
             }
             break;
@@ -418,7 +426,7 @@ void XtensaISS::execute_jump_instruction(uint32_t instruction) {
                 set_windowed_register(current_window, get_rd(instruction), registers[XTENSA_PC] + 4);
                 
                 // Jump to target
-                int32_t offset = (int32_t)(int24_t)get_imm24(instruction);
+                int32_t offset = sign_extend_24(get_imm24(instruction));
                 registers[XTENSA_PC] += offset * 4;
             }
             break;

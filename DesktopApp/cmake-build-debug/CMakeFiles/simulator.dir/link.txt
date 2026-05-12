@@ -1,0 +1,2 @@
+C:\Qt\Tools\mingw1310_64\bin\ar.exe qc lib\libsimulator.a CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/iss/xtensa_iss.cpp.obj CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/memory/memory_model.cpp.obj CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/scheduler/event_scheduler.cpp.obj CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/elf_loader/elf_loader.cpp.obj
+C:\Qt\Tools\mingw1310_64\bin\ranlib.exe lib\libsimulator.a

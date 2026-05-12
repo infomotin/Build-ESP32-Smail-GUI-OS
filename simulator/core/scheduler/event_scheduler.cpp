@@ -184,7 +184,7 @@ Timer::~Timer() {
 
 void Timer::start() {
     if (!running) {
-        event_id = scheduler->schedule_event(interval_ms, EventType::TIMER_EVENT, priority, callback, recurring, interval);
+        event_id = scheduler->schedule_event(interval, EventType::TIMER_EVENT, priority, callback, recurring, interval);
         running = true;
     }
 }
@@ -413,4 +413,19 @@ void DMAController::process_dma_transfer(DMATransfer* transfer) {
 
 uint32_t DMAController::generate_transfer_id() {
     return next_transfer_id++;
+}
+
+void EventScheduler::reset() {
+    // Clear all pending events
+    while (!event_queue.empty()) {
+        event_queue.pop();
+    }
+    active_events.clear();
+    next_event_id = 1;
+    stats = {};
+    clock = SimulationClock(); // reset clock to default
+}
+
+bool EventScheduler::initialize() {
+    return true;
 }

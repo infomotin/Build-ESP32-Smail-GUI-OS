@@ -1,4 +1,7 @@
 #include "elf_loader.h"
+
+#include <cstring>
+#include <functional>
 #include <fstream>
 #include <iostream>
 #include <iomanip>
@@ -95,7 +98,7 @@ void ElfLoader::parse_header() {
     header.e_magic = read_uint32(0);
     header.e_class = read_uint8(4);
     header.e_data = read_uint8(5);
-    header.e_version = read_uint8(6);
+    header.e_ident_version = read_uint8(6);  // EI_VERSION from e_ident
     header.e_osabi = read_uint8(7);
     header.e_abiversion = read_uint8(8);
     header.e_type = read_uint16(16);

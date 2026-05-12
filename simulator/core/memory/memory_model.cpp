@@ -277,7 +277,7 @@ uint32_t MemoryModel::get_region_size(uint32_t address) const {
     return region ? region->size : 0;
 }
 
-void MemoryModel::dump_memory(uint32_t address, uint32_t size) const {
+void MemoryModel::dump_memory(uint32_t address, uint32_t size) {
     std::cout << "Memory dump at 0x" << std::hex << address << " (0x" << size << " bytes):\n";
     
     for (uint32_t i = 0; i < size; i += 16) {
@@ -400,4 +400,8 @@ uint32_t MemoryModel::align_address(uint32_t address, uint32_t alignment) const 
 
 bool MemoryModel::is_aligned(uint32_t address, uint32_t alignment) const {
     return (address & (alignment - 1)) == 0;
+}
+
+bool MemoryModel::initialize() {
+    return true;
 }

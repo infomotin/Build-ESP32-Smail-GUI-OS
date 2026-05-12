@@ -102,12 +102,17 @@ public:
     /**
      * @brief Clear all components
      */
-    void clear();
+     void clear();
 
-    /**
-     * @brief Select a component
-     */
-    void selectComponent(VirtualComponent* component);
+     /**
+      * @brief Select all components
+      */
+     void selectAll();
+
+     /**
+      * @brief Select a component
+      */
+     void selectComponent(VirtualComponent* component);
 
     /**
      * @brief Get currently selected component
@@ -228,7 +233,6 @@ private:
     void deleteSelected();
     void copySelected();
     void paste();
-    void selectAll();
     void updateSelectionRect();
     void drawSelectionBox(QPainter* painter, const VirtualComponent* comp);
     void createContextMenu(const QPoint& pos);

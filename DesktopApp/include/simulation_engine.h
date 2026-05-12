@@ -13,13 +13,24 @@
 #include <atomic>
 #include <mutex>
 #include <condition_variable>
+#include <thread>
+#include <QObject>
+#include <QTimer>
 
 #include "simulator/core/iss/xtensa_iss.h"
 #include "simulator/core/memory/memory_model.h"
 #include "simulator/core/scheduler/event_scheduler.h"
 #include "simulator/core/elf_loader/elf_loader.h"
 
-// Forward declarations
+namespace esp32sim {
+
+// Bring core types from global namespace into esp32sim
+using ::MemoryModel;
+using ::EventScheduler;
+using ::ElfLoader;
+using ::XtensaISS;
+
+// Forward declarations for peripheral classes (defined in DesktopApp)
 class GPIOController;
 class I2CController;
 class SPIController;
@@ -30,8 +41,6 @@ class LEDCController;
 class WiFiSimulator;
 class BLESimulator;
 class DebugController;
-
-namespace esp32sim {
 
 /**
  * @enum SimulationState
@@ -82,7 +91,7 @@ struct FirmwareInfo {
  * This class integrates the ISS, memory model, peripherals, and provides
  * the main simulation loop with timing control.
  */
-class SimulationEngine {
+class SimulationEngine : public QObject {
     Q_OBJECT
 
 public:
@@ -181,7 +190,7 @@ signals:
     /**
      * @brief Emitted when simulation state changes
      */
-    void stateChanged(SimulationState old_state, SimulationState new_state);
+    void stateChanged(SimulationState new_state);
 
     /**
      * @brief Emitted when firmware is loaded

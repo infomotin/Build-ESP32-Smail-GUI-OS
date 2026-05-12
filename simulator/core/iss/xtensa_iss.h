@@ -50,7 +50,7 @@
 #define XTENAS_INTCLEAR 36
 #define XTENAS_INTLEVEL 37
 #define XTENAS_EXCMASK 38
-#define XTENAS_VECBASE 39
+#define XTENSA_VECBASE 39
 #define XTENAS_EXCVADDR 40
 
 // Exception causes

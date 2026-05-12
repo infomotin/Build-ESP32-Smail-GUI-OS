@@ -110,4 +110,8 @@ void Application::onAboutToQuit() {
     shutdown();
 }
 
+void Application::updateStatus() {
+    // No-op for now
+}
+
 } // namespace esp32sim

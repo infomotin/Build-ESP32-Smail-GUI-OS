@@ -12,7 +12,7 @@
 namespace esp32sim {
 
 ElfLoaderWrapper::ElfLoaderWrapper() {
-    loader_ = std::make_unique<ElfLoader>();
+    loader_ = std::make_unique<::ElfLoader>();
 }
 
 ElfLoaderWrapper::~ElfLoaderWrapper() = default;

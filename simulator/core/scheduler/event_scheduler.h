@@ -86,6 +86,8 @@ public:
     EventScheduler();
     ~EventScheduler();
     
+    bool initialize();
+    
     // Time management
     uint64_t get_current_time() const { return clock.get_time(); }
     void set_time_scale(double scale) { clock.set_time_scale(scale); }
@@ -93,6 +95,7 @@ public:
     void pause() { clock.pause(); }
     void resume() { clock.resume(); }
     bool is_paused() const { return clock.is_paused(); }
+    void reset();  // Reset scheduler state
     
     // Event scheduling
     uint32_t schedule_event(uint64_t delay, EventType type, EventPriority priority,

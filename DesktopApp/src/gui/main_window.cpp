@@ -4,18 +4,11 @@
  */
 
 #include "gui/main_window.h"
-#include "ui_main_window.h"  // Generated from .ui file
 
 #include "application.h"
 #include "simulation_engine.h"
 #include "gui/pinout_panel.h"
 #include "gui/workspace.h"
-#include "gui/component_library.h"
-#include "gui/console_panel.h"
-#include "gui/logic_analyzer.h"
-#include "gui/oscilloscope.h"
-#include "gui/debug_panel.h"
-#include "gui/properties_panel.h"
 
 #include <QVBoxLayout>
 #include <QHBoxLayout>
@@ -25,6 +18,17 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QTimer>
+#include <QLabel>
+#include <QSlider>
+#include <QSettings>
+
+#include "gui/console_panel.h"
+#include "gui/logic_analyzer.h"
+#include "gui/oscilloscope.h"
+#include "gui/debug_panel.h"
+#include "gui/properties_panel.h"
+#include "gui/component_library.h"
+#include "virtual_components/component_base.h"
 
 namespace esp32sim {
 
@@ -207,7 +211,9 @@ void MainWindow::setupConnections() {
     connect(engine_, &SimulationEngine::stateChanged,
             this, &MainWindow::onSimulationStateChanged);
     connect(engine_, &SimulationEngine::firmwareLoaded,
-            this, &MainWindow::onFirmwareLoaded);
+            this, [this](const FirmwareInfo& /*info*/, bool success) {
+                onFirmwareLoaded(success, success ? QString() : QString("Firmware load failed"));
+            });
     connect(engine_, &SimulationEngine::statisticsUpdated,
             this, [](const SimulationStatistics& stats) {
                 // Update status bar with stats
@@ -304,8 +310,21 @@ void MainWindow::showSettings() {
     QMessageBox::information(this, "Settings", "Settings dialog not yet implemented");
 }
 
-void MainWindow::updateStatus(const QString& message) {
-    statusBar()->showMessage(message, 2000);
+void MainWindow::updateStatus() {
+    if (!engine_) return;
+    QString state_str;
+    switch (engine_->state()) {
+        case SimulationState::STOPPED: state_str = "Stopped"; break;
+        case SimulationState::RUNNING: state_str = "Running"; break;
+        case SimulationState::PAUSED: state_str = "Paused"; break;
+        case SimulationState::STEPPING: state_str = "Stepping"; break;
+        case SimulationState::ERROR: state_str = "Error"; break;
+        default: state_str = "Unknown";
+    }
+    QString msg = QString("State: %1 | Time: %2 us")
+                      .arg(state_str)
+                      .arg(engine_->simulationTime());
+    statusBar()->showMessage(msg);
 }
 
 void MainWindow::onFirmwareLoaded(bool success, const QString& error_msg) {

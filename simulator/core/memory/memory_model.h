@@ -5,6 +5,8 @@
 #include <memory>
 #include <map>
 #include <functional>
+#include <string>
+#include <mutex>
 
 // ESP32 Memory Map Regions
 #define ESP32_IRAM_BASE     0x40080000  // 192 KB
@@ -20,12 +22,8 @@
 #define ESP32_MMIO_BASE     0x3FF00000  // Memory-mapped I/O
 #define ESP32_MMIO_SIZE     0x80000
 
-// Memory access types
-enum class MemoryAccessType {
-    READ,
-    WRITE,
-    FETCH
-};
+// Include for MemoryAccessType enum definition
+#include "iss/xtensa_iss.h"
 
 // Memory region types
 enum class MemoryRegionType {
@@ -91,6 +89,10 @@ public:
     MemoryModel();
     ~MemoryModel();
     
+    bool initialize();
+    
+    void reset();
+    
     // Core memory access
     uint32_t read(uint32_t address);
     void write(uint32_t address, uint32_t value);
@@ -139,7 +141,7 @@ public:
     void reset_statistics() { stats = {}; }
     
     // Debug functions
-    void dump_memory(uint32_t address, uint32_t size) const;
+    void dump_memory(uint32_t address, uint32_t size);
     void dump_regions() const;
     void dump_watch_points() const;
 
