@@ -424,6 +424,32 @@ CMakeFiles/esp32_virtual_simulator.dir/src/core/main.cpp.obj: \
  C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/deque.tcc \
  C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_queue.h \
  D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/simulator/core/elf_loader/elf_loader.h \
+ D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/DesktopApp/include/gui/main_window.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/QToolBar \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qtoolbar.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/QStatusBar \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qstatusbar.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/QTabWidget \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/QDockWidget \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qdockwidget.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/QCloseEvent \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qevent.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qiodevice.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qurl.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qeventpoint.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qvector2d.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qvectornd.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qpointingdevice.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qinputdevice.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qscreen.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QList \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QObject \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QRect \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QSize \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QSizeF \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/QTransform \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qscreen_platform.h \
+ D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/DesktopApp/include/peripherals/gpio_controller.h \
  D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/DesktopApp/include/utils/logger.h \
  C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cstdarg \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/QMessageBox \

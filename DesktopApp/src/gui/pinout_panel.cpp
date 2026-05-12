@@ -6,6 +6,7 @@
 #include "gui/pinout_panel.h"
 #include "simulation_engine.h"
 #include "peripherals/gpio_controller.h"
+#include "utils/logger.h"
 
 #include <QPainter>
 #include <QMouseEvent>

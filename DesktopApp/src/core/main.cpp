@@ -4,6 +4,7 @@
  */
 
 #include "application.h"
+#include "gui/main_window.h"
 #include "utils/logger.h"
 
 #include <QApplication>
@@ -11,7 +12,12 @@
 
 #ifdef _WIN32
 #include <windows.h>
+#undef ERROR
+#undef min
+#undef max
 #endif
+
+using namespace esp32sim;
 
 int main(int argc, char* argv[]) {
     QApplication app(argc, argv);

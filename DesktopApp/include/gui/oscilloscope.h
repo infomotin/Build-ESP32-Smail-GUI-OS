@@ -11,6 +11,7 @@
 #include <vector>
 #include <deque>
 #include <atomic>
+#include <array>
 
 #include "simulator/core/memory/memory_model.h"
 
@@ -195,7 +196,7 @@ private:
     QPoint view_origin_ = QPoint(0, 0);
     bool show_grid_ = true;
     bool show_measurements_ = true;
-    Measurements measurements_;
+    std::array<Measurements, NUM_CHANNELS> measurements_;
 
     // UI controls
     QComboBox* timebase_combo_ = nullptr;

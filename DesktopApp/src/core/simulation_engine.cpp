@@ -319,7 +319,7 @@ void SimulationEngine::reset() {
 void SimulationEngine::setSpeedMultiplier(double multiplier) {
     speed_multiplier_ = std::max(0.1, std::min(10.0, multiplier));
     scheduler_->set_time_scale(speed_multiplier_);
-    LOG_DEBUG("Simulation speed set to {:.1f}x", speed_multiplier_);
+    LOG_DEBUG("Simulation speed set to {:.1f}x", speed_multiplier_.load());
 }
 
 void SimulationEngine::tick() {
@@ -397,7 +397,8 @@ void SimulationEngine::updateStats() {
     if (isRunning()) {
         stats_.runtime_ms = elapsedTimeMs();
         stats_.ips = (stats_.instructions_executed * 1000.0) / (stats_.runtime_ms + 1);
-        stats_.memory_usage = memory_->getStatistics().total_reads + memory_->getStatistics().total_writes;
+        const auto& mem_stats = memory_->get_statistics();
+        stats_.memory_usage = mem_stats.total_reads + mem_stats.total_writes;
 
         emit statisticsUpdated(stats_);
     }

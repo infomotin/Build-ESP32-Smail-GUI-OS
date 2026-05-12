@@ -7,6 +7,7 @@
 #define GUI_COMPONENT_LIBRARY_H
 
 #include <QWidget>
+#include "virtual_components/component_base.h"
 
 namespace esp32sim {
 
@@ -22,6 +23,8 @@ class ComponentLibrary : public QWidget {
 public:
     explicit ComponentLibrary(QWidget* parent = nullptr);
     ~ComponentLibrary() override = default;
+
+    static VirtualComponent* createComponent(VirtualComponent::ComponentType type);
 };
 
 } // namespace esp32sim

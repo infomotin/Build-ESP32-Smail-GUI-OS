@@ -14,7 +14,7 @@
 #include <memory>
 
 #include "simulator/core/memory/memory_model.h"
-#include "gpio_controller.h"
+#include "peripherals/gpio_controller.h"
 
 QT_BEGIN_NAMESPACE
 class QMenu;

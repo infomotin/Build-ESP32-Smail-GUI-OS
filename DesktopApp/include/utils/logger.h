@@ -62,11 +62,11 @@ private:
 std::string format(const char* fmt, ...);
 
 // Convenience macros (variadic formatting support)
-#define LOG_VERBOSE(...) esp32sim::Logger::instance().log(esp32sim::LogLevel::VERBOSE, esp32sim::format(__VA_ARGS__))
-#define LOG_DEBUG(...)   esp32sim::Logger::instance().log(esp32sim::LogLevel::DEBUG,   esp32sim::format(__VA_ARGS__))
-#define LOG_INFO(...)    esp32sim::Logger::instance().log(esp32sim::LogLevel::INFO,    esp32sim::format(__VA_ARGS__))
-#define LOG_WARN(...)    esp32sim::Logger::instance().log(esp32sim::LogLevel::WARN,    esp32sim::format(__VA_ARGS__))
-#define LOG_ERROR(...)   esp32sim::Logger::instance().log(esp32sim::LogLevel::ERROR,   esp32sim::format(__VA_ARGS__))
+#define LOG_VERBOSE(...) esp32sim::Logger::instance().log(esp32sim::LogLevel::VERBOSE, format(__VA_ARGS__))
+#define LOG_DEBUG(...)   esp32sim::Logger::instance().log(esp32sim::LogLevel::DEBUG,   format(__VA_ARGS__))
+#define LOG_INFO(...)    esp32sim::Logger::instance().log(esp32sim::LogLevel::INFO,    format(__VA_ARGS__))
+#define LOG_WARN(...)    esp32sim::Logger::instance().log(esp32sim::LogLevel::WARN,    format(__VA_ARGS__))
+#define LOG_ERROR(...)   esp32sim::Logger::instance().log(esp32sim::LogLevel::ERROR,   format(__VA_ARGS__))
 
 } // namespace esp32sim
 

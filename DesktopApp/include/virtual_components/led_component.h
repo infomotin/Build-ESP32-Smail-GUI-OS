@@ -23,9 +23,9 @@ public:
 
     QRectF boundingRect() const override;
     void paint(QPainter* painter) override;
-    void mousePressEvent(QPointF pos) override {}
-    void mouseReleaseEvent(QPointF pos) override {}
-    void mouseMoveEvent(QPointF pos) override {}
+    void mousePressEvent(QPointF pos) {}
+    void mouseReleaseEvent(QPointF pos) {}
+    void mouseMoveEvent(QPointF pos) {}
     void mouseDoubleClickEvent(QPointF pos) override;
 
     std::vector<QPointF> connectionPoints() const override;
@@ -85,9 +85,9 @@ public:
 
     QRectF boundingRect() const override;
     void paint(QPainter* painter) override;
-    void mousePressEvent(QPointF pos) override {}
-    void mouseReleaseEvent(QPointF pos) override {}
-    void mouseMoveEvent(QPointF pos) override {}
+    void mousePressEvent(QPointF pos) {}
+    void mouseReleaseEvent(QPointF pos) {}
+    void mouseMoveEvent(QPointF pos) {}
     void mouseDoubleClickEvent(QPointF pos) override;
 
     std::vector<QPointF> connectionPoints() const override;

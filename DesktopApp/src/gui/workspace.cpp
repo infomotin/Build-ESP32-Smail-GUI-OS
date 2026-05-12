@@ -6,6 +6,7 @@
 #include "gui/workspace.h"
 #include "virtual_components/component_base.h"
 #include "virtual_components/led_component.h"
+#include "virtual_components/button_component.h"
 #include "simulation_engine.h"
 #include "utils/logger.h"
 
@@ -14,6 +15,9 @@
 #include <QBuffer>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QJsonArray>
+#include <QDrag>
+#include <QMouseEvent>
 
 namespace esp32sim {
 
@@ -45,7 +49,7 @@ void Workspace::addComponent(VirtualComponent* component, const QPointF& positio
     QRectF bounds = component->boundingRect();
     component->setPosition(position - QPointF(bounds.width()/2, bounds.height()/2));
 
-    connect(component, &VirtualComponent::componentChanged,
+    connect(component, &VirtualComponent::changed,
             this, &Workspace::update);
     connect(component, &VirtualComponent::connectionChanged,
             this, [this](int pin, bool connected) {
@@ -304,7 +308,7 @@ void Workspace::mouseMoveEvent(QMouseEvent* event) {
             break;
 
         case InteractionMode::PANNING:
-            view_offset_ += (event->pos() - event->oldpos()) / zoom_;
+            view_offset_ += (event->pos() - event->oldPos()) / zoom_;
             update();
             break;
 

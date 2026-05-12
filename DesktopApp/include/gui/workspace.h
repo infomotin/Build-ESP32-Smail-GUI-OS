@@ -251,7 +251,7 @@ private:
      * @brief Convert workspace coordinates to screen coordinates
      */
     QPoint workspaceToScreen(const QPointF& workspace_pos) const {
-        return (workspace_pos + view_offset_) * zoom_ + rect().center().toPoint();
+        return ((workspace_pos + view_offset_) * zoom_ + rect().center()).toPoint();
     }
 };
 

@@ -76,7 +76,7 @@ signals:
     /**
      * @brief Emitted when firmware is loaded
      */
-    void firmwareLoaded(bool success, const QString& error_msg = "");
+    void firmwareLoaded(const FirmwareInfo& info, bool success);
 
     /**
      * @brief Emitted when simulation state changes

@@ -259,8 +259,10 @@ private:
  */
 class I2CSlaveDeviceBase : public I2CSlaveDevice {
 public:
-    I2CSlaveDeviceBase(uint8_t address, const std::string& name)
-        : address(address), name(name) {}
+    I2CSlaveDeviceBase(uint8_t address, const std::string& name) {
+        this->address = address;
+        this->name = name;
+    }
 
     virtual ~I2CSlaveDeviceBase() = default;
 

@@ -9,6 +9,7 @@
 #include "simulation_engine.h"
 #include "gui/pinout_panel.h"
 #include "gui/workspace.h"
+#include "utils/logger.h"
 
 #include <QVBoxLayout>
 #include <QHBoxLayout>

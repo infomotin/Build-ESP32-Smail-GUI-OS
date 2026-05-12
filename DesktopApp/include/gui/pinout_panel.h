@@ -92,6 +92,11 @@ public slots:
      */
     void highlightPin(int pin, bool highlight);
 
+    /**
+     * @brief Show context menu for a pin
+     */
+    void showPinContextMenu(int pin, const QPoint& global_pos);
+
 private slots:
     /**
      * @brief Handle timer update
@@ -103,8 +108,8 @@ protected:
     void mousePressEvent(QMouseEvent* event) override;
     void mouseDoubleClickEvent(QMouseEvent* event) override;
     void contextMenuEvent(QContextMenuEvent* event) override;
-    void enterEvent(QEvent* event) override;
-    void leaveEvent(QEvent* event) override;
+    void enterEvent(QEvent* event);
+    void leaveEvent(QEvent* event);
 
 private:
     SimulationEngine* engine_;
@@ -122,6 +127,7 @@ private:
     std::vector<PinInfo> pin_positions_;
     std::map<int, QColor> pin_colors_;
     std::map<int, QString> pin_tooltips_;
+    std::vector<GPIOPinState> pins_;
     int hovered_pin_ = -1;
     int selected_pin_ = -1;
 
@@ -141,10 +147,10 @@ private:
     void updatePinColors();
     QColor pinColor(const GPIOPinState& pin_state) const;
     QString pinTooltip(int pin) const;
+    QString getPinFunction(int pin) const;
     void drawPin(QPainter* painter, const PinInfo& pin);
     void drawModuleOutline(QPainter* painter);
     int pinAtPosition(const QPointF& pos) const;
-    void showPinContextMenu(int pin, const QPoint& global_pos);
     void drivePinManually(int pin, bool high);
     void openWaveformForPin(int pin);
 

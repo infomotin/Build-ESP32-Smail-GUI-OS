@@ -185,7 +185,7 @@ public:
      */
     struct Stats {
         uint64_t breakpoints_hit = 0;
-        uint64 watchpoints_hit = 0;
+        uint64_t watchpoints_hit = 0;
         uint64_t steps_performed = 0;
         uint64_t continue_count = 0;
     };

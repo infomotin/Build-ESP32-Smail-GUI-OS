@@ -77,13 +77,14 @@ public:
 
 signals:
     void changed();  // Emitted when component property changes
-    void connectionChanged();  // Emitted when pin connection changes
+    void connectionChanged(int pin, bool connected);  // Emitted when pin connection changes
 
 protected:
     void emitChanged() { emit changed(); }
-    void emitConnectionChanged() { emit connectionChanged(); }
+    void emitConnectionChanged(int pin, bool connected) { emit connectionChanged(pin, connected); }
 
     QString name_;
+    std::vector<int> pin_connections_;
 };
 
 } // namespace esp32sim

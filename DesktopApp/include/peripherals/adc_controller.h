@@ -9,6 +9,7 @@
 #include <vector>
 #include <random>
 #include <mutex>
+#include <array>
 
 #include "simulator/core/memory/memory_model.h"
 
@@ -170,6 +171,8 @@ private:
 
     // Noise generation
     std::mt19937 rng_;
+    bool noise_enabled_ = true;
+    float noise_std_dev_ = 2.0f;
 
     // Timing
     uint32_t conversion_time_us_ = 1;    // 1 microsecond typical

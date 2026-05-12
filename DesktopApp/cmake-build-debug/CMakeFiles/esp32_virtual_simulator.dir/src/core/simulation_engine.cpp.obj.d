@@ -329,6 +329,12 @@ CMakeFiles/esp32_virtual_simulator.dir/src/core/simulation_engine.cpp.obj: \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qobject_impl.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qbindingstorage.h \
  C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/chrono \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QTimer \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qtimer.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qbasictimer.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qabstracteventdispatcher.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qeventloop.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qdeadlinetimer.h \
  D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/simulator/core/iss/xtensa_iss.h \
  D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/simulator/core/memory/memory_model.h \
  D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/simulator/core/scheduler/event_scheduler.h \
@@ -349,10 +355,6 @@ CMakeFiles/esp32_virtual_simulator.dir/src/core/simulation_engine.cpp.obj: \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qtwidgetsexports.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qcoreapplication.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qcoreevent.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qbasictimer.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qabstracteventdispatcher.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qeventloop.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qdeadlinetimer.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qnativeinterface.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qcoreapplication_platform.h \
  C:/Qt/6.11.0/mingw_64/include/QtGui/qwindowdefs.h \
@@ -422,8 +424,6 @@ CMakeFiles/esp32_virtual_simulator.dir/src/core/simulation_engine.cpp.obj: \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qsystemtrayicon.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/QMenu \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qmenu.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/QTimer \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qtimer.h \
  D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/DesktopApp/include/peripherals/gpio_controller.h \
  D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/DesktopApp/include/peripherals/i2c_controller.h \
  D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/DesktopApp/include/peripherals/spi_controller.h \

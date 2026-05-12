@@ -9,8 +9,8 @@
 // Helper: sign-extend a 24-bit value stored in lower 24 bits of uint32_t
 static inline int32_t sign_extend_24(uint32_t val) {
     val &= 0xFFFFFF;
-    // Shift left 8 then arithmetic right shift 8 to sign-extend from 24 bits
-    return static_cast<int32_t>((val << 8) >> 8);
+    // Use standard sign extension pattern to avoid implementation-defined behavior
+    return static_cast<int32_t>((val ^ 0x800000) - 0x800000);
 }
 
 XtensaISS::XtensaISS(MemoryModel* memory, EventScheduler* scheduler)
