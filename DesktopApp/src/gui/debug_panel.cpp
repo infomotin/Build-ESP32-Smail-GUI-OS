@@ -107,7 +107,12 @@ void esp32sim::DebugPanel::updateDisplay() {
     if (!engine_ || !debug_) return;
 
     updateRegisterTable();
-    updateMemoryDisplay(0);
+    // Only show memory if a valid address is known
+    bool ok;
+    uint32_t addr = memory_addr_edit_ ? memory_addr_edit_->text().toUInt(&ok, 0) : 0;
+    if (ok && addr != 0) {
+        updateMemoryDisplay(addr);
+    }
     updateCallStack();
     updateBreakpointTable();
 }
@@ -133,19 +138,29 @@ void esp32sim::DebugPanel::updateRegisterTable() {
 
 void esp32sim::DebugPanel::updateMemoryDisplay(uint32_t address, uint32_t num_bytes) {
     Q_UNUSED(num_bytes);
-    if (!memory_display_) return;
+    if (!memory_display_ || !engine_ || !engine_->memory()) return;
+    // Don't read address 0 — it's not mapped on ESP32 and will throw
+    if (address == 0) return;
 
     QString text;
     uint32_t start = address;
 
-    for (int row = 0; row < 16; row++) {
-        text += QString("0x%1: ").arg(start + row * 16, 8, 16, QChar('0'));
-        for (int col = 0; col < 16; col++) {
-            uint32_t addr = start + row * 16 + col;
-            uint8_t byte = engine_->memory()->read_byte(addr);
-            text += QString("%1 ").arg(byte, 2, 16, QChar('0'));
+    try {
+        for (int row = 0; row < 16; row++) {
+            text += QString("0x%1: ").arg(start + row * 16, 8, 16, QChar('0'));
+            for (int col = 0; col < 16; col++) {
+                uint32_t addr = start + row * 16 + col;
+                try {
+                    uint8_t byte = engine_->memory()->read_byte(addr);
+                    text += QString("%1 ").arg(byte, 2, 16, QChar('0'));
+                } catch (...) {
+                    text += "?? ";
+                }
+            }
+            text += "\n";
         }
-        text += "\n";
+    } catch (...) {
+        text = "[Memory read error]";
     }
 
     memory_display_->setPlainText(text);
