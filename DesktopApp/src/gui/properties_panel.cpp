@@ -4,7 +4,7 @@
  */
 
 #include "gui/properties_panel.h"
-#include "gui/component_base.h"
+#include "virtual_components/component_base.h"
 #include "simulation_engine.h"
 
 namespace esp32sim {

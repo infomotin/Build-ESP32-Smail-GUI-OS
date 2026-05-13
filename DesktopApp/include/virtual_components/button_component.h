@@ -22,10 +22,10 @@ public:
 
     QRectF boundingRect() const override;
     void paint(QPainter* painter) override;
-    void mousePressEvent(QPointF pos) override;
-    void mouseReleaseEvent(QPointF pos) override;
-    void mouseMoveEvent(QPointF pos) override {}
-    void mouseDoubleClickEvent(QPointF pos) override;
+    void mousePressEvent(QPointF pos);
+    void mouseReleaseEvent(QPointF pos);
+    void mouseMoveEvent(QPointF pos) {}
+    void mouseDoubleClickEvent(QPointF pos);
 
     std::vector<QPointF> connectionPoints() const override;
     int pinForConnectionPoint(int index) const override;
@@ -40,6 +40,9 @@ public:
 
     std::string toJSON() const override;
     void fromJSON(const std::string& json) override;
+
+    QPointF position() const override { return position_; }
+    void setPosition(const QPointF& pos) override { position_ = pos; emitChanged(); }
 
     /**
      * @brief Check if button is currently pressed
@@ -57,6 +60,7 @@ public:
     void setActiveHigh(bool active_high) { active_high_ = active_high; emitChanged(); }
 
 private:
+    QPointF position_;
     bool pressed_ = false;
     bool active_high_ = true;  // Default: active high
     int connected_pin_ = -1;
@@ -83,10 +87,10 @@ public:
 
     QRectF boundingRect() const override;
     void paint(QPainter* painter) override;
-    void mousePressEvent(QPointF pos) override;
-    void mouseReleaseEvent(QPointF pos) override;
-    void mouseMoveEvent(QPointF pos) override {}
-    void mouseDoubleClickEvent(QPointF pos) override;
+    void mousePressEvent(QPointF pos);
+    void mouseReleaseEvent(QPointF pos);
+    void mouseMoveEvent(QPointF pos) {}
+    void mouseDoubleClickEvent(QPointF pos);
 
     std::vector<QPointF> connectionPoints() const override;
     int pinForConnectionPoint(int index) const override;
@@ -101,6 +105,9 @@ public:
 
     std::string toJSON() const override;
     void fromJSON(const std::string& json) override;
+
+    QPointF position() const override { return position_; }
+    void setPosition(const QPointF& pos) override { position_ = pos; emitChanged(); }
 
     /**
      * @brief Get switch position
@@ -123,6 +130,7 @@ public:
     void setActiveHigh(bool active_high) { active_high_ = active_high; emitChanged(); }
 
 private:
+    QPointF position_;
     bool on_ = false;
     bool active_high_ = true;
     int connected_pin_ = -1;

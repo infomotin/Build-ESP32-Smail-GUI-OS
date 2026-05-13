@@ -22,6 +22,7 @@
 #include <QLabel>
 #include <QSlider>
 #include <QSettings>
+#include <QSplitter>
 
 #include "gui/console_panel.h"
 #include "gui/logic_analyzer.h"

@@ -11,6 +11,7 @@
 #include <memory>
 #include <mutex>
 
+#include <QObject>
 #include "simulator/core/memory/memory_model.h"
 
 namespace esp32sim {

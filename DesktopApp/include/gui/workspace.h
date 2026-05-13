@@ -196,6 +196,7 @@ private:
     VirtualComponent* dragging_component_ = nullptr;
     QPointF drag_start_pos_;
     QPointF drag_offset_;
+    QPointF last_mouse_pos_;  // For panning delta (Qt6 compatibility)
 
     // Wiring state
     bool wiring_active_ = false;

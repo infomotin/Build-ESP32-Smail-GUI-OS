@@ -275,7 +275,7 @@ void PinoutPanel::drivePinManually(int pin, bool high) {
     }
 
     // Send signal to engine to drive pin
-    Q_EMIT pinStateChanged(pin, high ? GPIOLevel::HIGH : GPIOLevel::LOW);
+    Q_EMIT pinStateChanged(pin, high);
 }
 
 void PinoutPanel::openWaveformForPin(int pin) {

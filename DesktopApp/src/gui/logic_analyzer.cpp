@@ -13,6 +13,11 @@
 #include <QMenu>
 #include <QFileDialog>
 #include <fstream>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QPushButton>
+#include <QLabel>
+#include <QComboBox>
 
 namespace esp32sim {
 

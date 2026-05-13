@@ -13,6 +13,7 @@
 #include <QTextEdit>
 #include <QTreeWidget>
 #include <QComboBox>
+#include <QInputDialog>
 
 namespace esp32sim {
 

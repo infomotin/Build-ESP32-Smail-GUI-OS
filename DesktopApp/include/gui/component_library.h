@@ -24,7 +24,7 @@ public:
     explicit ComponentLibrary(QWidget* parent = nullptr);
     ~ComponentLibrary() override = default;
 
-    static VirtualComponent* createComponent(VirtualComponent::ComponentType type);
+    static VirtualComponent* createComponent(ComponentType type);
 };
 
 } // namespace esp32sim

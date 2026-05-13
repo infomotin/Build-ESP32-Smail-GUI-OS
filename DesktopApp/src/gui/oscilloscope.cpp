@@ -10,6 +10,7 @@
 #include <QPainter>
 #include <QPaintEvent>
 #include <QMenu>
+#include <fstream>
 
 namespace esp32sim {
 

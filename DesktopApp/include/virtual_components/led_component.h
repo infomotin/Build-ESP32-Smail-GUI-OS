@@ -26,7 +26,7 @@ public:
     void mousePressEvent(QPointF pos) {}
     void mouseReleaseEvent(QPointF pos) {}
     void mouseMoveEvent(QPointF pos) {}
-    void mouseDoubleClickEvent(QPointF pos) override;
+    void mouseDoubleClickEvent(QPointF pos);
 
     std::vector<QPointF> connectionPoints() const override;
     int pinForConnectionPoint(int index) const override;
@@ -41,6 +41,9 @@ public:
 
     std::string toJSON() const override;
     void fromJSON(const std::string& json) override;
+
+    QPointF position() const override { return position_; }
+    void setPosition(const QPointF& pos) override { position_ = pos; emitChanged(); }
 
     /**
      * @brief Get LED color
@@ -63,6 +66,7 @@ public:
     void setLit(bool lit) { is_lit_ = lit; emitChanged(); }
 
 private:
+    QPointF position_;
     QColor color_ = QColor(Qt::green);
     bool is_lit_ = false;
     int connected_pin_ = -1;
@@ -88,7 +92,7 @@ public:
     void mousePressEvent(QPointF pos) {}
     void mouseReleaseEvent(QPointF pos) {}
     void mouseMoveEvent(QPointF pos) {}
-    void mouseDoubleClickEvent(QPointF pos) override;
+    void mouseDoubleClickEvent(QPointF pos);
 
     std::vector<QPointF> connectionPoints() const override;
     int pinForConnectionPoint(int index) const override;
@@ -103,6 +107,9 @@ public:
 
     std::string toJSON() const override;
     void fromJSON(const std::string& json) override;
+
+    QPointF position() const override { return position_; }
+    void setPosition(const QPointF& pos) override { position_ = pos; emitChanged(); }
 
     /**
      * @brief Get color components
@@ -129,6 +136,7 @@ public:
     void setBlue(bool on) { blue_on_ = on; emitChanged(); }
 
 private:
+    QPointF position_;
     QColor color_ = QColor(Qt::white);
     bool red_on_ = false;
     bool green_on_ = false;

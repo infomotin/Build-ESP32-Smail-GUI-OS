@@ -4,6 +4,7 @@
  */
 
 #include "gui/workspace.h"
+#include "gui/component_library.h"
 #include "virtual_components/component_base.h"
 #include "virtual_components/led_component.h"
 #include "virtual_components/button_component.h"
@@ -18,6 +19,7 @@
 #include <QJsonArray>
 #include <QDrag>
 #include <QMouseEvent>
+#include <QPainterPath>
 
 namespace esp32sim {
 
@@ -49,15 +51,14 @@ void Workspace::addComponent(VirtualComponent* component, const QPointF& positio
     QRectF bounds = component->boundingRect();
     component->setPosition(position - QPointF(bounds.width()/2, bounds.height()/2));
 
-    connect(component, &VirtualComponent::changed,
-            this, &Workspace::update);
+    connect(component, &VirtualComponent::changed, this, [this](){ update(); });
     connect(component, &VirtualComponent::connectionChanged,
             this, [this](int pin, bool connected) {
                 Q_EMIT connectionMade(pin, connected);
             });
 
     LOG_DEBUG("Added component '{}' to workspace", component->name());
-    Q_EMIT componentAdded(component.get());
+    Q_EMIT componentAdded(component);
     update();
 }
 
@@ -67,11 +68,7 @@ void Workspace::removeComponent(VirtualComponent* component) {
                                return ptr.get() == component;
                            });
     if (it != components_.end()) {
-        // Disconnect all pins
-        for (int pin : component->pin_connections_) {
-            // Notify engine
-        }
-
+        // Disconnect all pins (TODO: notify engine)
         components_.erase(it);
         if (selected_component_ == component) {
             selected_component_ = nullptr;
@@ -103,7 +100,7 @@ std::string Workspace::saveLayout() const {
     for (const auto& comp : components_) {
         QJsonObject obj;
         obj["type"] = static_cast<int>(comp->type());
-        obj["name"] = QString::fromStdString(comp->name());
+        obj["name"] = comp->name();
         obj["x"] = comp->position().x();
         obj["y"] = comp->position().y();
         obj["json"] = QString::fromStdString(comp->toJSON());
@@ -121,7 +118,7 @@ std::string Workspace::saveLayout() const {
 bool Workspace::loadLayout(const std::string& json) {
     clear();
 
-    QJsonDocument doc = QJsonDocument::fromJson(QString::fromStdString(json));
+    QJsonDocument doc = QJsonDocument::fromJson(QByteArray::fromStdString(json));
     if (doc.isNull() || !doc.isObject()) {
         return false;
     }
@@ -138,9 +135,9 @@ bool Workspace::loadLayout(const std::string& json) {
         QString comp_json = obj["json"].toString();
 
         VirtualComponent* comp = ComponentLibrary::createComponent(
-            static_cast<VirtualComponent::ComponentType>(type));
+            static_cast<ComponentType>(type));
         if (comp) {
-            comp->setName(name.toStdString());
+            comp->setName(name);
             comp->fromJSON(comp_json.toStdString());
             addComponent(comp, QPointF(x, y));
         }
@@ -216,6 +213,7 @@ void Workspace::paintEvent(QPaintEvent* event) {
 }
 
 void Workspace::mousePressEvent(QMouseEvent* event) {
+    last_mouse_pos_ = event->pos();  // Track for panning
     QPointF workspace_pos = screenToWorkspace(event->pos());
 
     // Check for clicks on wire (implement later)
@@ -292,7 +290,8 @@ void Workspace::mouseReleaseEvent(QMouseEvent* event) {
 }
 
 void Workspace::mouseMoveEvent(QMouseEvent* event) {
-    QPointF workspace_pos = screenToWorkspace(event->pos());
+    QPoint current_pos = event->position().toPoint();
+    QPointF workspace_pos = screenToWorkspace(current_pos);
 
     switch (mode_) {
         case InteractionMode::DRAGGING_COMPONENT:
@@ -303,18 +302,21 @@ void Workspace::mouseMoveEvent(QMouseEvent* event) {
             break;
 
         case InteractionMode::DRAGGING_SELECTION:
-            selection_rect_ = QRect(drag_start_pos_.toPoint(), event->pos()).normalized();
+            selection_rect_ = QRect(drag_start_pos_.toPoint(), current_pos).normalized();
             update();
             break;
 
         case InteractionMode::PANNING:
-            view_offset_ += (event->pos() - event->oldPos()) / zoom_;
+            view_offset_ += (current_pos - last_mouse_pos_) / zoom_;
             update();
             break;
 
         default:
             break;
     }
+
+    // Update last mouse position for next move
+    last_mouse_pos_ = current_pos;
 
     // Update wiring preview
     if (wiring_active_) {
@@ -355,9 +357,9 @@ void Workspace::dropEvent(QDropEvent* event) {
         int component_type = data.toInt();
 
         auto comp = ComponentLibrary::createComponent(
-            static_cast<VirtualComponent::ComponentType>(component_type));
+            static_cast<ComponentType>(component_type));
         if (comp) {
-            QPointF drop_pos = screenToWorkspace(event->pos());
+            QPointF drop_pos = screenToWorkspace(event->position().toPoint());
             addComponent(comp, drop_pos);
             event->acceptProposedAction();
         }
@@ -466,7 +468,7 @@ void Workspace::connectPinToGPIO(VirtualComponent* component, int component_pin,
     component->connectPin(gpio_pin, component_pin);
 
     LOG_DEBUG("Connected component pin {} to GPIO{}", component_pin, gpio_pin);
-    Q_EMIT connectionMade(gpio_pin);
+    Q_EMIT connectionMade(gpio_pin, component_pin);
 
     update();
 }

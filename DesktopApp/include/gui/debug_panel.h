@@ -15,6 +15,7 @@
 #include <QTimer>
 
 #include "../debug/debug_controller.h"
+#include "../simulation_engine.h"
 
 QT_BEGIN_NAMESPACE
 class QLabel;

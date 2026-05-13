@@ -1,8 +1,8 @@
-CMakeFiles/esp32_virtual_simulator.dir/src/gui/main_window.cpp.obj: \
- D:\laragon\www\Build\ ESP32\ Smail\ GUI\ OS\DesktopApp\src\gui\main_window.cpp \
- D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/DesktopApp/include/gui/main_window.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QMainWindow \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qmainwindow.h \
+CMakeFiles/esp32_virtual_simulator.dir/src/gui/component_library.cpp.obj: \
+ D:\laragon\www\Build\ ESP32\ Smail\ GUI\ OS\DesktopApp\src\gui\component_library.cpp \
+ D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/DesktopApp/include/gui/component_library.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/QWidget \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qwidget.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
  C:/Qt/6.11.0/mingw_64/include/QtGui/qtguiglobal.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qglobal.h \
@@ -156,7 +156,6 @@ CMakeFiles/esp32_virtual_simulator.dir/src/gui/main_window.cpp.obj: \
  C:/Qt/6.11.0/mingw_64/include/QtGui/qtguiexports.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qtwidgets-config.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qtwidgetsexports.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qwidget.h \
  C:/Qt/6.11.0/mingw_64/include/QtGui/qwindowdefs.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qobjectdefs.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qnamespace.h \
@@ -385,184 +384,15 @@ CMakeFiles/esp32_virtual_simulator.dir/src/gui/main_window.cpp.obj: \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qsizepolicy.h \
  C:/Qt/6.11.0/mingw_64/include/QtGui/qcursor.h \
  C:/Qt/6.11.0/mingw_64/include/QtGui/qbitmap.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qtabwidget.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QMenu \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qmenu.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QToolBar \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qtoolbar.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QStatusBar \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qstatusbar.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QTabWidget \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QDockWidget \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qdockwidget.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/QTimer \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qtimer.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qbasictimer.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qabstracteventdispatcher.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qeventloop.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qdeadlinetimer.h \
- C:/Qt/6.11.0/mingw_64/include/QtGui/QCloseEvent \
- C:/Qt/6.11.0/mingw_64/include/QtGui/qevent.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qcoreevent.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qiodevice.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qurl.h \
- C:/Qt/6.11.0/mingw_64/include/QtGui/qeventpoint.h \
- C:/Qt/6.11.0/mingw_64/include/QtGui/qvector2d.h \
- C:/Qt/6.11.0/mingw_64/include/QtGui/qvectornd.h \
- C:/Qt/6.11.0/mingw_64/include/QtGui/qpointingdevice.h \
- C:/Qt/6.11.0/mingw_64/include/QtGui/qinputdevice.h \
- C:/Qt/6.11.0/mingw_64/include/QtGui/qscreen.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/QList \
+ D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/DesktopApp/include/virtual_components/component_base.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/QObject \
- C:/Qt/6.11.0/mingw_64/include/QtCore/QRect \
- C:/Qt/6.11.0/mingw_64/include/QtCore/QSize \
- C:/Qt/6.11.0/mingw_64/include/QtCore/QSizeF \
- C:/Qt/6.11.0/mingw_64/include/QtGui/QTransform \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qnativeinterface.h \
- C:/Qt/6.11.0/mingw_64/include/QtGui/qscreen_platform.h \
- C:/Qt/6.11.0/mingw_64/include/QtGui/qguiapplication.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qcoreapplication.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qcoreapplication_platform.h \
- C:/Qt/6.11.0/mingw_64/include/QtGui/qinputmethod.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qlocale.h \
- C:/Qt/6.11.0/mingw_64/include/QtGui/qguiapplication_platform.h \
- D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/DesktopApp/include/simulation_engine.h \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/mutex \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/std_mutex.h \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/unique_lock.h \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/condition_variable \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/thread \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/std_thread.h \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/this_thread_sleep.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/QObject \
- D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/simulator/core/iss/xtensa_iss.h \
- D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/simulator/core/memory/memory_model.h \
- D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/simulator/core/scheduler/event_scheduler.h \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/queue \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/deque \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_deque.h \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/deque.tcc \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_queue.h \
- D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/simulator/core/elf_loader/elf_loader.h \
- D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/DesktopApp/include/peripherals/gpio_controller.h \
- D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/DesktopApp/include/application.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QApplication \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qapplication.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QSystemTrayIcon \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qsystemtrayicon.h \
- D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/DesktopApp/include/gui/pinout_panel.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QWidget \
  C:/Qt/6.11.0/mingw_64/include/QtGui/QPainter \
  C:/Qt/6.11.0/mingw_64/include/QtGui/qpainter.h \
  C:/Qt/6.11.0/mingw_64/include/QtGui/qtextoption.h \
  C:/Qt/6.11.0/mingw_64/include/QtGui/qpen.h \
- C:/Qt/6.11.0/mingw_64/include/QtGui/QMouseEvent \
- D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/DesktopApp/include/gui/workspace.h \
- C:/Qt/6.11.0/mingw_64/include/QtGui/QDragEnterEvent \
- C:/Qt/6.11.0/mingw_64/include/QtGui/QDropEvent \
- C:/Qt/6.11.0/mingw_64/include/QtCore/QMimeData \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qmimedata.h \
- D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/DesktopApp/include/virtual_components/component_base.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/QRectF \
  C:/Qt/6.11.0/mingw_64/include/QtCore/QPointF \
- D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/DesktopApp/include/utils/logger.h \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cstdarg \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QVBoxLayout \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qboxlayout.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qlayout.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qlayoutitem.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qgridlayout.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QHBoxLayout \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QMenuBar \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qmenubar.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QFileDialog \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qfiledialog.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qdir.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qdirlisting.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qfiledevice.h \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/filesystem \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/fs_fwd.h \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/fs_path.h \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/locale \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/locale_facets.h \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cwctype \
- C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wctype.h \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/ctype_base.h \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/ctype_inline.h \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/locale_facets.tcc \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/locale_facets_nonio.h \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/time_members.h \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/messages_members.h \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/codecvt.h \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/locale_facets_nonio.tcc \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/locale_conv.h \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/iomanip \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/quoted_string.h \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/sstream \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/istream \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ios \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/basic_ios.h \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/basic_ios.tcc \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ostream \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/ostream.tcc \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/istream.tcc \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/sstream.tcc \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/codecvt \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/fs_dir.h \
- C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/fs_ops.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qdatetime.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qcalendar.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qfile.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qfileinfo.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qtimezone.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qdialog.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QMessageBox \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qmessagebox.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QLabel \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qlabel.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qframe.h \
- C:/Qt/6.11.0/mingw_64/include/QtGui/qpicture.h \
- C:/Qt/6.11.0/mingw_64/include/QtGui/qtextdocument.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QSlider \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qslider.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qabstractslider.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/QSettings \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qsettings.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QSplitter \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qsplitter.h \
- D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/DesktopApp/include/gui/console_panel.h \
- D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/DesktopApp/include/gui/logic_analyzer.h \
- D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/DesktopApp/include/gui/oscilloscope.h \
- D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/DesktopApp/include/gui/debug_panel.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QTableWidget \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qtablewidget.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qtableview.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qabstractitemview.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qabstractitemmodel.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qitemselectionmodel.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qstyleoption.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qabstractspinbox.h \
- C:/Qt/6.11.0/mingw_64/include/QtGui/qvalidator.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qregularexpression.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qstyle.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qtabbar.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qrubberband.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QTextEdit \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qtextedit.h \
- C:/Qt/6.11.0/mingw_64/include/QtGui/qtextcursor.h \
- C:/Qt/6.11.0/mingw_64/include/QtGui/qtextformat.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QTreeWidget \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qtreewidget.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qtreeview.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qtreewidgetitemiterator.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QComboBox \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qcombobox.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QLineEdit \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qlineedit.h \
- D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/DesktopApp/include/debug/debug_controller.h \
- D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/DesktopApp/include/gui/properties_panel.h \
- D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/DesktopApp/include/gui/component_library.h \
- D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/DesktopApp/include/virtual_components/component_base.h
+ D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/DesktopApp/include/virtual_components/led_component.h \
+ D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/DesktopApp/include/virtual_components/component_base.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/QColor \
+ D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/DesktopApp/include/virtual_components/button_component.h
