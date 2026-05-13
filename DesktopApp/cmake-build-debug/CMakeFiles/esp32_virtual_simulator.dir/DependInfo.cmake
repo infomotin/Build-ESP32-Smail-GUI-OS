@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "D:/laragon/www/Build ESP32 Smail GUI OS/DesktopApp/cmake-build-debug/esp32_virtual_simulator_autogen/mocs_compilation.cpp" "CMakeFiles/esp32_virtual_simulator.dir/esp32_virtual_simulator_autogen/mocs_compilation.cpp.obj" "gcc" "CMakeFiles/esp32_virtual_simulator.dir/esp32_virtual_simulator_autogen/mocs_compilation.cpp.obj.d"
   "D:/laragon/www/Build ESP32 Smail GUI OS/DesktopApp/src/core/application.cpp" "CMakeFiles/esp32_virtual_simulator.dir/src/core/application.cpp.obj" "gcc" "CMakeFiles/esp32_virtual_simulator.dir/src/core/application.cpp.obj.d"
   "D:/laragon/www/Build ESP32 Smail GUI OS/DesktopApp/src/core/elf_loader_wrapper.cpp" "CMakeFiles/esp32_virtual_simulator.dir/src/core/elf_loader_wrapper.cpp.obj" "gcc" "CMakeFiles/esp32_virtual_simulator.dir/src/core/elf_loader_wrapper.cpp.obj.d"
   "D:/laragon/www/Build ESP32 Smail GUI OS/DesktopApp/src/core/main.cpp" "CMakeFiles/esp32_virtual_simulator.dir/src/core/main.cpp.obj" "gcc" "CMakeFiles/esp32_virtual_simulator.dir/src/core/main.cpp.obj.d"

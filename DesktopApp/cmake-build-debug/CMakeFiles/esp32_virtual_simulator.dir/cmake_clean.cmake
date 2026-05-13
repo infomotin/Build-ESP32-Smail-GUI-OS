@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/esp32_virtual_simulator.dir/esp32_virtual_simulator_autogen/mocs_compilation.cpp.obj"
+  "CMakeFiles/esp32_virtual_simulator.dir/esp32_virtual_simulator_autogen/mocs_compilation.cpp.obj.d"
   "CMakeFiles/esp32_virtual_simulator.dir/src/core/application.cpp.obj"
   "CMakeFiles/esp32_virtual_simulator.dir/src/core/application.cpp.obj.d"
   "CMakeFiles/esp32_virtual_simulator.dir/src/core/elf_loader_wrapper.cpp.obj"
@@ -51,6 +53,9 @@ file(REMOVE_RECURSE
   "CMakeFiles/esp32_virtual_simulator.dir/src/virtual_components/button_component.cpp.obj.d"
   "CMakeFiles/esp32_virtual_simulator.dir/src/virtual_components/led_component.cpp.obj"
   "CMakeFiles/esp32_virtual_simulator.dir/src/virtual_components/led_component.cpp.obj.d"
+  "CMakeFiles/esp32_virtual_simulator_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/esp32_virtual_simulator_autogen.dir/ParseCache.txt"
+  "esp32_virtual_simulator_autogen"
   "esp32_virtual_simulator.exe"
   "esp32_virtual_simulator.exe.manifest"
   "esp32_virtual_simulator.pdb"

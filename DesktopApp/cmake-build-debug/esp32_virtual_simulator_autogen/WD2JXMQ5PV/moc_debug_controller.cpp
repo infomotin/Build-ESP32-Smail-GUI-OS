@@ -1,0 +1,155 @@
+/****************************************************************************
+** Meta object code from reading C++ file 'debug_controller.h'
+**
+** Created by: The Qt Meta Object Compiler version 69 (Qt 6.11.0)
+**
+** WARNING! All changes made in this file will be lost!
+*****************************************************************************/
+
+#include "../../../include/debug/debug_controller.h"
+#include <QtCore/qmetatype.h>
+
+#include <QtCore/qtmochelpers.h>
+
+#include <memory>
+
+
+#include <QtCore/qxptype_traits.h>
+#if !defined(Q_MOC_OUTPUT_REVISION)
+#error "The header file 'debug_controller.h' doesn't include <QObject>."
+#elif Q_MOC_OUTPUT_REVISION != 69
+#error "This file was generated using the moc from 6.11.0. It"
+#error "cannot be used with the include files from this version of Qt."
+#error "(The moc has changed too much.)"
+#endif
+
+#ifndef Q_CONSTINIT
+#define Q_CONSTINIT
+#endif
+
+QT_WARNING_PUSH
+QT_WARNING_DISABLE_DEPRECATED
+QT_WARNING_DISABLE_GCC("-Wuseless-cast")
+namespace {
+struct qt_meta_tag_ZN8esp32sim15DebugControllerE_t {};
+} // unnamed namespace
+
+template <> constexpr inline auto esp32sim::DebugController::qt_create_metaobjectdata<qt_meta_tag_ZN8esp32sim15DebugControllerE_t>()
+{
+    namespace QMC = QtMocConstants;
+    QtMocHelpers::StringRefStorage qt_stringData {
+        "esp32sim::DebugController",
+        "breakpointHit",
+        "",
+        "uint32_t",
+        "address",
+        "std::string",
+        "symbol_name",
+        "watchpointHit",
+        "old_value",
+        "new_value",
+        "stateChanged",
+        "paused"
+    };
+
+    QtMocHelpers::UintData qt_methods {
+        // Signal 'breakpointHit'
+        QtMocHelpers::SignalData<void(uint32_t, const std::string &)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 3, 4 }, { 0x80000000 | 5, 6 },
+        }}),
+        // Signal 'watchpointHit'
+        QtMocHelpers::SignalData<void(uint32_t, uint32_t, uint32_t)>(7, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 3, 4 }, { 0x80000000 | 3, 8 }, { 0x80000000 | 3, 9 },
+        }}),
+        // Signal 'stateChanged'
+        QtMocHelpers::SignalData<void(bool)>(10, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Bool, 11 },
+        }}),
+    };
+    QtMocHelpers::UintData qt_properties {
+    };
+    QtMocHelpers::UintData qt_enums {
+    };
+    return QtMocHelpers::metaObjectData<DebugController, qt_meta_tag_ZN8esp32sim15DebugControllerE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+            qt_methods, qt_properties, qt_enums);
+}
+Q_CONSTINIT const QMetaObject esp32sim::DebugController::staticMetaObject = { {
+    QMetaObject::SuperData::link<QObject::staticMetaObject>(),
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN8esp32sim15DebugControllerE_t>.stringdata,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN8esp32sim15DebugControllerE_t>.data,
+    qt_static_metacall,
+    nullptr,
+    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN8esp32sim15DebugControllerE_t>.metaTypes,
+    nullptr
+} };
+
+void esp32sim::DebugController::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    auto *_t = static_cast<DebugController *>(_o);
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: _t->breakpointHit((*reinterpret_cast<std::add_pointer_t<uint32_t>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<std::string>>(_a[2]))); break;
+        case 1: _t->watchpointHit((*reinterpret_cast<std::add_pointer_t<uint32_t>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<uint32_t>>(_a[2])),(*reinterpret_cast<std::add_pointer_t<uint32_t>>(_a[3]))); break;
+        case 2: _t->stateChanged((*reinterpret_cast<std::add_pointer_t<bool>>(_a[1]))); break;
+        default: ;
+        }
+    }
+    if (_c == QMetaObject::IndexOfMethod) {
+        if (QtMocHelpers::indexOfMethod<void (DebugController::*)(uint32_t , const std::string & )>(_a, &DebugController::breakpointHit, 0))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (DebugController::*)(uint32_t , uint32_t , uint32_t )>(_a, &DebugController::watchpointHit, 1))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (DebugController::*)(bool )>(_a, &DebugController::stateChanged, 2))
+            return;
+    }
+}
+
+const QMetaObject *esp32sim::DebugController::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *esp32sim::DebugController::qt_metacast(const char *_clname)
+{
+    if (!_clname) return nullptr;
+    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN8esp32sim15DebugControllerE_t>.strings))
+        return static_cast<void*>(this);
+    return QObject::qt_metacast(_clname);
+}
+
+int esp32sim::DebugController::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 3)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 3;
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 3)
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+        _id -= 3;
+    }
+    return _id;
+}
+
+// SIGNAL 0
+void esp32sim::DebugController::breakpointHit(uint32_t _t1, const std::string & _t2)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1, _t2);
+}
+
+// SIGNAL 1
+void esp32sim::DebugController::watchpointHit(uint32_t _t1, uint32_t _t2, uint32_t _t3)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 1, nullptr, _t1, _t2, _t3);
+}
+
+// SIGNAL 2
+void esp32sim::DebugController::stateChanged(bool _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 2, nullptr, _t1);
+}
+QT_WARNING_POP

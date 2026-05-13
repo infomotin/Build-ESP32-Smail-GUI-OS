@@ -29,12 +29,12 @@ DebugPanel::DebugPanel(SimulationEngine* engine, QWidget* parent)
     if (!debug_) return;
 
     setupUI();
-    refresh();
+    updateDisplay();
 }
 
 DebugPanel::~DebugPanel() = default;
 
-void DebugPanel::setupUI() {
+void esp32sim::DebugPanel::setupUI() {
     QVBoxLayout* main_layout = new QVBoxLayout(this);
     setLayout(main_layout);
 
@@ -103,7 +103,7 @@ void DebugPanel::setupUI() {
             this, &DebugPanel::onBreakpointDoubleClicked);
 }
 
-void DebugPanel::updateDisplay() {
+void esp32sim::DebugPanel::updateDisplay() {
     if (!engine_ || !debug_) return;
 
     updateRegisterTable();
@@ -112,7 +112,7 @@ void DebugPanel::updateDisplay() {
     updateBreakpointTable();
 }
 
-void DebugPanel::updateRegisterTable() {
+void esp32sim::DebugPanel::updateRegisterTable() {
     if (!register_table_) return;
 
     register_table_->setRowCount(64);
@@ -131,7 +131,7 @@ void DebugPanel::updateRegisterTable() {
     }
 }
 
-void DebugPanel::updateMemoryDisplay(uint32_t address, uint32_t num_bytes) {
+void esp32sim::DebugPanel::updateMemoryDisplay(uint32_t address, uint32_t num_bytes) {
     Q_UNUSED(num_bytes);
     if (!memory_display_) return;
 
@@ -151,7 +151,7 @@ void DebugPanel::updateMemoryDisplay(uint32_t address, uint32_t num_bytes) {
     memory_display_->setPlainText(text);
 }
 
-void DebugPanel::updateCallStack() {
+void esp32sim::DebugPanel::updateCallStack() {
     if (!call_stack_tree_) return;
 
     call_stack_tree_->clear();
@@ -166,7 +166,7 @@ void DebugPanel::updateCallStack() {
     }
 }
 
-void DebugPanel::updateBreakpointTable() {
+void esp32sim::DebugPanel::updateBreakpointTable() {
     if (!breakpoint_table_ || !debug_) return;
 
     const auto& bps = debug_->breakpoints();
@@ -187,11 +187,11 @@ void DebugPanel::updateBreakpointTable() {
     }
 }
 
-void DebugPanel::onSimulationStateChanged(SimulationState state) {
+void esp32sim::DebugPanel::onSimulationStateChanged(SimulationState state) {
     setEnabled(state != SimulationState::STOPPED);
 }
 
-void DebugPanel::onAddBreakpoint() {
+void esp32sim::DebugPanel::onAddBreakpoint() {
     bool ok;
     QString addr_str = QInputDialog::getText(this, "Add Breakpoint",
                                              "Address (hex):", QLineEdit::Normal,
@@ -206,7 +206,7 @@ void DebugPanel::onAddBreakpoint() {
     }
 }
 
-void DebugPanel::onRemoveBreakpoint() {
+void esp32sim::DebugPanel::onRemoveBreakpoint() {
     int row = breakpoint_table_->currentRow();
     if (row >= 0) {
         auto bps = debug_->breakpoints();
@@ -217,7 +217,13 @@ void DebugPanel::onRemoveBreakpoint() {
     }
 }
 
-void DebugPanel::onRefreshMemory() {
+void esp32sim::DebugPanel::onBreakpointDoubleClicked(int row, int column) {
+    Q_UNUSED(row);
+    Q_UNUSED(column);
+    // TODO: toggle breakpoint state or edit
+}
+
+void esp32sim::DebugPanel::onRefreshMemory() {
     bool ok;
     uint32_t addr = memory_addr_edit_->text().toUInt(&ok, 0);
     if (ok) {
@@ -234,3 +240,9 @@ QString DebugPanel::formatBinary(uint32_t value) const {
 }
 
 } // namespace esp32sim
+void esp32sim::DebugPanel::onRegisterChanged(uint32_t, uint32_t) {}
+void esp32sim::DebugPanel::onMemoryAddressChanged(const QString&) {}
+void esp32sim::DebugPanel::onMemoryValueChanged(const QString&) {}
+void esp32sim::DebugPanel::onStepInto() {}
+void esp32sim::DebugPanel::onStepOver() {}
+void esp32sim::DebugPanel::onStepOut() {}

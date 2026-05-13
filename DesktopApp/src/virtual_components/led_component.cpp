@@ -9,10 +9,14 @@
 
 namespace esp32sim {
 
-std::vector<std::string> split(const std::string& s, char delim);
+static std::vector<std::string> split(const std::string& s, char delim);
 
 LEDComponent::LEDComponent(QObject* parent)
     : VirtualComponent("LED", parent) {
+}
+
+RGBLEDComponent::RGBLEDComponent(QObject* parent)
+    : VirtualComponent("RGB LED", parent) {
 }
 
 QRectF LEDComponent::boundingRect() const {
@@ -147,7 +151,7 @@ void LEDComponent::fromJSON(const std::string& json) {
     // Simplified
 }
 
-std::vector<std::string> split(const std::string& s, char delim) {
+static std::vector<std::string> split(const std::string& s, char delim) {
     std::vector<std::string> result;
     size_t start = 0, end = 0;
     while ((end = s.find(delim, start)) != std::string::npos) {
@@ -158,4 +162,17 @@ std::vector<std::string> split(const std::string& s, char delim) {
     return result;
 }
 
+QRectF RGBLEDComponent::boundingRect() const { return QRectF(0, 0, 40, 30); }
+void RGBLEDComponent::paint(QPainter* painter) {}
+void RGBLEDComponent::mouseDoubleClickEvent(QPointF pos) {}
+std::vector<QPointF> RGBLEDComponent::connectionPoints() const { return {}; }
+int RGBLEDComponent::pinForConnectionPoint(int index) const { return -1; }
+void RGBLEDComponent::connectPin(int pin, int connection_point) {}
+void RGBLEDComponent::disconnectPin(int pin) {}
+bool RGBLEDComponent::isPinConnected(int pin) const { return false; }
+std::string RGBLEDComponent::serialize() const { return "{}"; }
+void RGBLEDComponent::deserialize(const std::string& data) {}
+void RGBLEDComponent::onGPIOChanged(int pin, bool level) {}
+std::string RGBLEDComponent::toJSON() const { return "{}"; }
+void RGBLEDComponent::fromJSON(const std::string& json) {}
 } // namespace esp32sim

@@ -83,6 +83,7 @@ private:
     struct Characteristic {
         uint16_t handle;
         uint16_t value_handle;
+        uint8_t properties;
         std::vector<uint8_t> value;
         std::function<void(const std::vector<uint8_t>&)> write_callback;
     };

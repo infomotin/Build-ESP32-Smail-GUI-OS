@@ -366,7 +366,7 @@ void SimulationEngine::tick() {
 
     // Emit stats periodically
     if (current_time - last_stats_time_ > 1000000000ULL) {  // 1 second
-        updateStatistics();
+        updateStats();
         last_stats_time_ = current_time;
     }
 }

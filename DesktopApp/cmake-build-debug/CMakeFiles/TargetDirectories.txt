@@ -6,3 +6,7 @@ D:/laragon/www/Build ESP32 Smail GUI OS/DesktopApp/cmake-build-debug/CMakeFiles/
 D:/laragon/www/Build ESP32 Smail GUI OS/DesktopApp/cmake-build-debug/CMakeFiles/install.dir
 D:/laragon/www/Build ESP32 Smail GUI OS/DesktopApp/cmake-build-debug/CMakeFiles/install/local.dir
 D:/laragon/www/Build ESP32 Smail GUI OS/DesktopApp/cmake-build-debug/CMakeFiles/install/strip.dir
+D:/laragon/www/Build ESP32 Smail GUI OS/DesktopApp/cmake-build-debug/CMakeFiles/esp32_virtual_simulator_autogen_timestamp_deps.dir
+D:/laragon/www/Build ESP32 Smail GUI OS/DesktopApp/cmake-build-debug/CMakeFiles/esp32_virtual_simulator_autogen.dir
+D:/laragon/www/Build ESP32 Smail GUI OS/DesktopApp/cmake-build-debug/CMakeFiles/simulator_autogen_timestamp_deps.dir
+D:/laragon/www/Build ESP32 Smail GUI OS/DesktopApp/cmake-build-debug/CMakeFiles/simulator_autogen.dir

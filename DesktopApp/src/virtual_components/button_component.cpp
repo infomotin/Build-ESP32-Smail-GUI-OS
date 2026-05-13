@@ -9,7 +9,7 @@
 
 namespace esp32sim {
 
-std::vector<std::string> split(const std::string& s, char delim);
+static std::vector<std::string> split(const std::string& s, char delim);
 
 ButtonComponent::ButtonComponent(QObject* parent)
     : VirtualComponent("Button", parent) {
@@ -123,7 +123,7 @@ void ButtonComponent::fromJSON(const std::string&) {
     // TODO: Parse and restore
 }
 
-std::vector<std::string> split(const std::string& s, char delim) {
+static std::vector<std::string> split(const std::string& s, char delim) {
     std::vector<std::string> parts;
     size_t start = 0, end = 0;
     while ((end = s.find(delim, start)) != std::string::npos) {

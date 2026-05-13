@@ -139,4 +139,16 @@ bool WiFiSimulator::transmitPacket(const std::vector<uint8_t>& packet, bool to_s
     return true;
 }
 
+void WiFiSimulator::authenticationSimulation(const std::string& password) {
+    // Stub
+}
+
+void WiFiSimulator::dhcpSimulation() {
+    // Stub
+}
+
+bool WiFiSimulator::simulateWirelessConditions(bool to_station) {
+    return true; // Stub
+}
+
 } // namespace esp32sim

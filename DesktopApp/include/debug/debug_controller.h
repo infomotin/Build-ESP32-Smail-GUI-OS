@@ -236,7 +236,6 @@ private:
 
     // Internal methods
     void checkBreakpoints();
-    void checkWatchpoints(uint32_t address, uint32_t value, bool is_write);
     void invalidateCallStack() { call_stack_valid_ = false; }
     void buildCallStack() const;
     bool unwindFrame(uint32_t fp, uint32_t* ret_addr, uint32_t* next_fp) const;

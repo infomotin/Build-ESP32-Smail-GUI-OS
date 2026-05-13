@@ -32,7 +32,7 @@ Oscilloscope::Oscilloscope(SimulationEngine* engine, QWidget* parent)
 
 Oscilloscope::~Oscilloscope() = default;
 
-void Oscilloscope::initializeChannels() {
+void esp32sim::Oscilloscope::initializeChannels() {
     for (int i = 0; i < NUM_CHANNELS; i++) {
         AnalogChannel& ch = channels_[i];
         ch.gpio_pin = 0;
@@ -44,7 +44,7 @@ void Oscilloscope::initializeChannels() {
     }
 }
 
-void Oscilloscope::paintEvent(QPaintEvent* event) {
+void esp32sim::Oscilloscope::paintEvent(QPaintEvent* event) {
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
 
@@ -57,11 +57,11 @@ void Oscilloscope::paintEvent(QPaintEvent* event) {
     QWidget::paintEvent(event);
 }
 
-void Oscilloscope::drawBackground(QPainter& painter) {
+void esp32sim::Oscilloscope::drawBackground(QPainter& painter) {
     painter.fillRect(rect(), QColor(30, 30, 30));
 }
 
-void Oscilloscope::drawGrid(QPainter& painter, const QRect& rect) {
+void esp32sim::Oscilloscope::drawGrid(QPainter& painter, const QRect& rect) {
     painter.setPen(QPen(QColor(60, 60, 60), 0.5));
 
     // Vertical lines (time divisions)
@@ -81,7 +81,7 @@ void Oscilloscope::drawGrid(QPainter& painter, const QRect& rect) {
     painter.drawLine(0, height() / 2, width(), height() / 2);
 }
 
-void Oscilloscope::drawWaveforms(QPainter& painter) {
+void esp32sim::Oscilloscope::drawWaveforms(QPainter& painter) {
     for (int ch = 0; ch < NUM_CHANNELS; ch++) {
         const auto& channel = channels_[ch];
         if (!channel.enabled || channel.buffer.empty()) continue;
@@ -90,7 +90,7 @@ void Oscilloscope::drawWaveforms(QPainter& painter) {
     }
 }
 
-void Oscilloscope::drawChannelWaveform(QPainter& painter, const AnalogChannel& ch,
+void esp32sim::Oscilloscope::drawChannelWaveform(QPainter& painter, const AnalogChannel& ch,
                                       int y_offset, int height) {
     QColor color = ch.color;
     painter.setPen(QPen(color, 2));
@@ -109,7 +109,7 @@ void Oscilloscope::drawChannelWaveform(QPainter& painter, const AnalogChannel& c
     painter.drawPolyline(poly);
 }
 
-void Oscilloscope::drawMeasurements(QPainter& painter) {
+void esp32sim::Oscilloscope::drawMeasurements(QPainter& painter) {
     if (!show_measurements_) return;
 
     painter.setPen(Qt::white);
@@ -126,7 +126,7 @@ void Oscilloscope::drawMeasurements(QPainter& painter) {
     }
 }
 
-void Oscilloscope::drawTriggerLine(QPainter& painter) {
+void esp32sim::Oscilloscope::drawTriggerLine(QPainter& painter) {
     if (!trigger_.enabled) return;
 
     int x = timeToX(trigger_.trigger_position_ns);
@@ -134,7 +134,7 @@ void Oscilloscope::drawTriggerLine(QPainter& painter) {
     painter.drawLine(x, 0, x, height());
 }
 
-void Oscilloscope::updateDisplay() {
+void esp32sim::Oscilloscope::updateDisplay() {
     if (!engine_ || engine_->state() != SimulationState::RUNNING) return;
 
     // Sample active channels
@@ -159,7 +159,7 @@ void Oscilloscope::updateDisplay() {
     update();
 }
 
-void Oscilloscope::addSample(int channel, uint64_t timestamp, float voltage) {
+void esp32sim::Oscilloscope::addSample(int channel, uint64_t timestamp, float voltage) {
     auto& ch = channels_[channel];
     ch.buffer.emplace_back(timestamp, voltage);
 
@@ -183,11 +183,11 @@ void Oscilloscope::addSample(int channel, uint64_t timestamp, float voltage) {
     }
 }
 
-void Oscilloscope::processTrigger() {
+void esp32sim::Oscilloscope::processTrigger() {
     // Trigger logic handled in addSample
 }
 
-void Oscilloscope::computeMeasurements(int channel) {
+void esp32sim::Oscilloscope::computeMeasurements(int channel) {
     const auto& ch = channels_[channel];
     if (ch.buffer.empty()) return;
 
@@ -220,24 +220,24 @@ void Oscilloscope::computeMeasurements(int channel) {
     }
 }
 
-void Oscilloscope::setTimebase(double s_per_div) {
+void esp32sim::Oscilloscope::setTimebase(double s_per_div) {
     timebase_s_per_div_ = s_per_div;
     update();
 }
 
-void Oscilloscope::setVerticalScale(int channel, double v_per_div) {
+void esp32sim::Oscilloscope::setVerticalScale(int channel, double v_per_div) {
     if (channel >= 0 && channel < NUM_CHANNELS) {
         channels_[channel].vertical_scale_v_per_div = v_per_div;
         update();
     }
 }
 
-void Oscilloscope::startAcquisition() {
+void esp32sim::Oscilloscope::startAcquisition() {
     refresh_timer_->start(50);
     LOG_INFO("Oscilloscope acquisition started");
 }
 
-void Oscilloscope::stopAcquisition() {
+void esp32sim::Oscilloscope::stopAcquisition() {
     refresh_timer_->stop();
     LOG_INFO("Oscilloscope acquisition stopped");
 }
@@ -258,3 +258,6 @@ bool Oscilloscope::exportToCSV(const std::string& filename, int channel) const {
 }
 
 } // namespace esp32sim
+void esp32sim::Oscilloscope::onSimulationStateChanged(esp32sim::SimulationState) {}
+void esp32sim::Oscilloscope::onRefreshRateChanged(int) {}
+void esp32sim::Oscilloscope::onTriggerSettingsChanged() {}

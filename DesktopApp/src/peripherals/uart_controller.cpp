@@ -272,4 +272,8 @@ void UARTController::writeRegister(uint32_t address, uint32_t value) {
     // Handle register writes from firmware
 }
 
+void UARTController::mapMemoryRegions() {
+    // Stub
+}
+
 } // namespace esp32sim

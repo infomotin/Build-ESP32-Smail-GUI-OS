@@ -41,7 +41,7 @@ class VirtualComponent : public QObject {
     Q_OBJECT
 
 public:
-    explicit VirtualComponent(const QString& name, QObject* parent = nullptr);
+    explicit VirtualComponent(const QString& name, QObject* parent = nullptr) : QObject(parent), name_(name) {}
     ~VirtualComponent() override = default;
 
     // Component identification

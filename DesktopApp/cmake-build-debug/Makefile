@@ -186,6 +186,58 @@ simulator/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\simulator.dir\build.make CMakeFiles/simulator.dir/build
 .PHONY : simulator/fast
 
+#=============================================================================
+# Target rules for targets named esp32_virtual_simulator_autogen_timestamp_deps
+
+# Build rule for target.
+esp32_virtual_simulator_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 esp32_virtual_simulator_autogen_timestamp_deps
+.PHONY : esp32_virtual_simulator_autogen_timestamp_deps
+
+# fast build rule for target.
+esp32_virtual_simulator_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\esp32_virtual_simulator_autogen_timestamp_deps.dir\build.make CMakeFiles/esp32_virtual_simulator_autogen_timestamp_deps.dir/build
+.PHONY : esp32_virtual_simulator_autogen_timestamp_deps/fast
+
+#=============================================================================
+# Target rules for targets named esp32_virtual_simulator_autogen
+
+# Build rule for target.
+esp32_virtual_simulator_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 esp32_virtual_simulator_autogen
+.PHONY : esp32_virtual_simulator_autogen
+
+# fast build rule for target.
+esp32_virtual_simulator_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\esp32_virtual_simulator_autogen.dir\build.make CMakeFiles/esp32_virtual_simulator_autogen.dir/build
+.PHONY : esp32_virtual_simulator_autogen/fast
+
+#=============================================================================
+# Target rules for targets named simulator_autogen_timestamp_deps
+
+# Build rule for target.
+simulator_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 simulator_autogen_timestamp_deps
+.PHONY : simulator_autogen_timestamp_deps
+
+# fast build rule for target.
+simulator_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\simulator_autogen_timestamp_deps.dir\build.make CMakeFiles/simulator_autogen_timestamp_deps.dir/build
+.PHONY : simulator_autogen_timestamp_deps/fast
+
+#=============================================================================
+# Target rules for targets named simulator_autogen
+
+# Build rule for target.
+simulator_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 simulator_autogen
+.PHONY : simulator_autogen
+
+# fast build rule for target.
+simulator_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\simulator_autogen.dir\build.make CMakeFiles/simulator_autogen.dir/build
+.PHONY : simulator_autogen/fast
+
 D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/elf_loader/elf_loader.obj: D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/elf_loader/elf_loader.cpp.obj
 .PHONY : D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/elf_loader/elf_loader.obj
 
@@ -281,6 +333,54 @@ D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/scheduler/event_scheduler
 D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/scheduler/event_scheduler.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\simulator.dir\build.make CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/scheduler/event_scheduler.cpp.s
 .PHONY : D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/scheduler/event_scheduler.cpp.s
+
+esp32_virtual_simulator_autogen/mocs_compilation.obj: esp32_virtual_simulator_autogen/mocs_compilation.cpp.obj
+.PHONY : esp32_virtual_simulator_autogen/mocs_compilation.obj
+
+# target to build an object file
+esp32_virtual_simulator_autogen/mocs_compilation.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\esp32_virtual_simulator.dir\build.make CMakeFiles/esp32_virtual_simulator.dir/esp32_virtual_simulator_autogen/mocs_compilation.cpp.obj
+.PHONY : esp32_virtual_simulator_autogen/mocs_compilation.cpp.obj
+
+esp32_virtual_simulator_autogen/mocs_compilation.i: esp32_virtual_simulator_autogen/mocs_compilation.cpp.i
+.PHONY : esp32_virtual_simulator_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+esp32_virtual_simulator_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\esp32_virtual_simulator.dir\build.make CMakeFiles/esp32_virtual_simulator.dir/esp32_virtual_simulator_autogen/mocs_compilation.cpp.i
+.PHONY : esp32_virtual_simulator_autogen/mocs_compilation.cpp.i
+
+esp32_virtual_simulator_autogen/mocs_compilation.s: esp32_virtual_simulator_autogen/mocs_compilation.cpp.s
+.PHONY : esp32_virtual_simulator_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+esp32_virtual_simulator_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\esp32_virtual_simulator.dir\build.make CMakeFiles/esp32_virtual_simulator.dir/esp32_virtual_simulator_autogen/mocs_compilation.cpp.s
+.PHONY : esp32_virtual_simulator_autogen/mocs_compilation.cpp.s
+
+simulator_autogen/mocs_compilation.obj: simulator_autogen/mocs_compilation.cpp.obj
+.PHONY : simulator_autogen/mocs_compilation.obj
+
+# target to build an object file
+simulator_autogen/mocs_compilation.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\simulator.dir\build.make CMakeFiles/simulator.dir/simulator_autogen/mocs_compilation.cpp.obj
+.PHONY : simulator_autogen/mocs_compilation.cpp.obj
+
+simulator_autogen/mocs_compilation.i: simulator_autogen/mocs_compilation.cpp.i
+.PHONY : simulator_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+simulator_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\simulator.dir\build.make CMakeFiles/simulator.dir/simulator_autogen/mocs_compilation.cpp.i
+.PHONY : simulator_autogen/mocs_compilation.cpp.i
+
+simulator_autogen/mocs_compilation.s: simulator_autogen/mocs_compilation.cpp.s
+.PHONY : simulator_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+simulator_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\simulator.dir\build.make CMakeFiles/simulator.dir/simulator_autogen/mocs_compilation.cpp.s
+.PHONY : simulator_autogen/mocs_compilation.cpp.s
 
 src/core/application.obj: src/core/application.cpp.obj
 .PHONY : src/core/application.obj
@@ -918,6 +1018,10 @@ help:
 	@echo ... install/strip
 	@echo ... list_install_components
 	@echo ... rebuild_cache
+	@echo ... esp32_virtual_simulator_autogen
+	@echo ... esp32_virtual_simulator_autogen_timestamp_deps
+	@echo ... simulator_autogen
+	@echo ... simulator_autogen_timestamp_deps
 	@echo ... esp32_virtual_simulator
 	@echo ... simulator
 	@echo ... D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/elf_loader/elf_loader.obj
@@ -932,6 +1036,12 @@ help:
 	@echo ... D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/scheduler/event_scheduler.obj
 	@echo ... D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/scheduler/event_scheduler.i
 	@echo ... D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/scheduler/event_scheduler.s
+	@echo ... esp32_virtual_simulator_autogen/mocs_compilation.obj
+	@echo ... esp32_virtual_simulator_autogen/mocs_compilation.i
+	@echo ... esp32_virtual_simulator_autogen/mocs_compilation.s
+	@echo ... simulator_autogen/mocs_compilation.obj
+	@echo ... simulator_autogen/mocs_compilation.i
+	@echo ... simulator_autogen/mocs_compilation.s
 	@echo ... src/core/application.obj
 	@echo ... src/core/application.i
 	@echo ... src/core/application.s

@@ -17,8 +17,8 @@
 
 namespace esp32sim {
 
-GPIOController::GPIOController(MemoryModel* memory)
-    : memory_(memory) {
+GPIOController::GPIOController(MemoryModel* memory, QObject* parent)
+    : QObject(parent), memory_(memory) {
     pins_.resize(GPIO_PIN_COUNT);
     pwm_states_.resize(GPIO_PIN_COUNT);
 }

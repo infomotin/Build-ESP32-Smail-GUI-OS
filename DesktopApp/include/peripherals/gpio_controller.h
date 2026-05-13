@@ -110,10 +110,11 @@ struct GPIOPinState {
  * - ADC/DAC simulation
  * - Schmitt trigger simulation for analog-like behavior
  */
-class GPIOController {
+class GPIOController : public QObject {
+    Q_OBJECT
 public:
-    GPIOController(MemoryModel* memory);
-    ~GPIOController();
+    explicit GPIOController(MemoryModel* memory, QObject* parent = nullptr);
+    ~GPIOController() override;
 
     /**
      * @brief Initialize the GPIO controller

@@ -122,7 +122,7 @@ int DebugController::setWatchpoint(uint32_t address, uint32_t size, bool read, b
     // Register with memory model
     memory_->add_watch_point(address, size, read, write,
         [this](uint32_t addr, uint32_t value, MemoryAccessType type) {
-            this->checkWatchpoints(addr, value, type == MemoryAccessType::WRITE);
+            this->checkWatchpoint(addr, value, type == MemoryAccessType::WRITE);
         });
 
     LOG_DEBUG("Watchpoint set at 0x{:08X} size={} bytes", address, size);

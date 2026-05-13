@@ -10,9 +10,10 @@
 #include <memory>
 #include <mutex>
 
+class MemoryModel;
+
 namespace esp32sim {
 
-class MemoryModel;
 
 /**
  * @class DACController

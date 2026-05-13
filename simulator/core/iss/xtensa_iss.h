@@ -209,34 +209,34 @@ private:
 };
 
 // Instruction field extraction functions
-inline uint32_t get_opcode(uint32_t instruction) {
+inline uint32_t XtensaISS::get_opcode(uint32_t instruction) {
     return (instruction >> 24) & 0xFF;
 }
 
-inline uint32_t get_rd(uint32_t instruction) {
+inline uint32_t XtensaISS::get_rd(uint32_t instruction) {
     return (instruction >> 20) & 0xF;
 }
 
-inline uint32_t get_rs1(uint32_t instruction) {
+inline uint32_t XtensaISS::get_rs1(uint32_t instruction) {
     return (instruction >> 16) & 0xF;
 }
 
-inline uint32_t get_rs2(uint32_t instruction) {
+inline uint32_t XtensaISS::get_rs2(uint32_t instruction) {
     return (instruction >> 12) & 0xF;
 }
 
-inline uint32_t get_imm8(uint32_t instruction) {
+inline uint32_t XtensaISS::get_imm8(uint32_t instruction) {
     return instruction & 0xFF;
 }
 
-inline uint32_t get_imm12(uint32_t instruction) {
+inline uint32_t XtensaISS::get_imm12(uint32_t instruction) {
     return instruction & 0xFFF;
 }
 
-inline uint32_t get_imm16(uint32_t instruction) {
+inline uint32_t XtensaISS::get_imm16(uint32_t instruction) {
     return instruction & 0xFFFF;
 }
 
-inline uint32_t get_imm24(uint32_t instruction) {
+inline uint32_t XtensaISS::get_imm24(uint32_t instruction) {
     return instruction & 0xFFFFFF;
 }

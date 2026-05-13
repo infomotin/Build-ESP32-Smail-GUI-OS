@@ -41,7 +41,7 @@ Workspace::Workspace(SimulationEngine* engine, QWidget* parent)
 
 Workspace::~Workspace() = default;
 
-void Workspace::addComponent(VirtualComponent* component, const QPointF& position) {
+void esp32sim::Workspace::addComponent(VirtualComponent* component, const QPointF& position) {
     if (!component) return;
 
     // Take ownership
@@ -62,7 +62,7 @@ void Workspace::addComponent(VirtualComponent* component, const QPointF& positio
     update();
 }
 
-void Workspace::removeComponent(VirtualComponent* component) {
+void esp32sim::Workspace::removeComponent(VirtualComponent* component) {
     auto it = std::find_if(components_.begin(), components_.end(),
                            [component](const std::unique_ptr<VirtualComponent>& ptr) {
                                return ptr.get() == component;
@@ -89,7 +89,7 @@ VirtualComponent* Workspace::componentAt(const QPointF& pos) const {
     return nullptr;
 }
 
-void Workspace::setZoom(float zoom) {
+void esp32sim::Workspace::setZoom(float zoom) {
     zoom_ = std::max(0.1f, std::min(5.0f, zoom));
     update();
 }
@@ -148,20 +148,20 @@ bool Workspace::loadLayout(const std::string& json) {
     return true;
 }
 
-void Workspace::clear() {
+void esp32sim::Workspace::clear() {
     components_.clear();
     selected_component_ = nullptr;
     wires_.clear();
     update();
 }
 
-void Workspace::selectComponent(VirtualComponent* component) {
+void esp32sim::Workspace::selectComponent(VirtualComponent* component) {
     selected_component_ = component;
     Q_EMIT selectionChanged(component);
     update();
 }
 
-void Workspace::updateFromGPIO() {
+void esp32sim::Workspace::updateFromGPIO() {
     // Update all components based on current GPIO state
     // Called periodically
     for (auto& comp : components_) {
@@ -171,7 +171,7 @@ void Workspace::updateFromGPIO() {
     update();
 }
 
-void Workspace::paintEvent(QPaintEvent* event) {
+void esp32sim::Workspace::paintEvent(QPaintEvent* event) {
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
 
@@ -212,7 +212,7 @@ void Workspace::paintEvent(QPaintEvent* event) {
     QWidget::paintEvent(event);
 }
 
-void Workspace::mousePressEvent(QMouseEvent* event) {
+void esp32sim::Workspace::mousePressEvent(QMouseEvent* event) {
     last_mouse_pos_ = event->pos();  // Track for panning
     QPointF workspace_pos = screenToWorkspace(event->pos());
 
@@ -258,7 +258,7 @@ void Workspace::mousePressEvent(QMouseEvent* event) {
     update();
 }
 
-void Workspace::mouseReleaseEvent(QMouseEvent* event) {
+void esp32sim::Workspace::mouseReleaseEvent(QMouseEvent* event) {
     if (event->button() == Qt::LeftButton) {
         if (mode_ == InteractionMode::DRAGGING_COMPONENT) {
             // Snap to grid if enabled
@@ -289,7 +289,7 @@ void Workspace::mouseReleaseEvent(QMouseEvent* event) {
     update();
 }
 
-void Workspace::mouseMoveEvent(QMouseEvent* event) {
+void esp32sim::Workspace::mouseMoveEvent(QMouseEvent* event) {
     QPoint current_pos = event->position().toPoint();
     QPointF workspace_pos = screenToWorkspace(current_pos);
 
@@ -325,7 +325,7 @@ void Workspace::mouseMoveEvent(QMouseEvent* event) {
     }
 }
 
-void Workspace::wheelEvent(QWheelEvent* event) {
+void esp32sim::Workspace::wheelEvent(QWheelEvent* event) {
     if (event->modifiers() & Qt::ControlModifier) {
         // Zoom
         float delta = event->angleDelta().y() / 120.0f;
@@ -339,19 +339,19 @@ void Workspace::wheelEvent(QWheelEvent* event) {
     event->accept();
 }
 
-void Workspace::dragEnterEvent(QDragEnterEvent* event) {
+void esp32sim::Workspace::dragEnterEvent(QDragEnterEvent* event) {
     if (event->mimeData()->hasFormat("application/x-esp32-component")) {
         event->acceptProposedAction();
     }
 }
 
-void Workspace::dragMoveEvent(QDragMoveEvent* event) {
+void esp32sim::Workspace::dragMoveEvent(QDragMoveEvent* event) {
     if (event->mimeData()->hasFormat("application/x-esp32-component")) {
         event->acceptProposedAction();
     }
 }
 
-void Workspace::dropEvent(QDropEvent* event) {
+void esp32sim::Workspace::dropEvent(QDropEvent* event) {
     if (event->mimeData()->hasFormat("application/x-esp32-component")) {
         QByteArray data = event->mimeData()->data("application/x-esp32-component");
         int component_type = data.toInt();
@@ -366,7 +366,7 @@ void Workspace::dropEvent(QDropEvent* event) {
     }
 }
 
-void Workspace::keyPressEvent(QKeyEvent* event) {
+void esp32sim::Workspace::keyPressEvent(QKeyEvent* event) {
     switch (event->key()) {
         case Qt::Key_Delete:
             if (selected_component_) {
@@ -393,7 +393,7 @@ void Workspace::keyPressEvent(QKeyEvent* event) {
     }
 }
 
-void Workspace::drawGrid(QPainter* painter) {
+void esp32sim::Workspace::drawGrid(QPainter* painter) {
     painter->setPen(QPen(QColor(200, 200, 200), 0.5));
 
     // Calculate visible area
@@ -417,7 +417,7 @@ void Workspace::drawGrid(QPainter* painter) {
     }
 }
 
-void Workspace::drawWires(QPainter* painter) {
+void esp32sim::Workspace::drawWires(QPainter* painter) {
     painter->setPen(QPen(Qt::black, 2));
 
     for (const auto& wire : wires_) {
@@ -433,7 +433,7 @@ void Workspace::drawWires(QPainter* painter) {
     }
 }
 
-void Workspace::drawWire(QPainter* painter, const QPointF& start, const QPointF& end, const QColor& color) {
+void esp32sim::Workspace::drawWire(QPainter* painter, const QPointF& start, const QPointF& end, const QColor& color) {
     // Orthogonal routing
     QPointF mid1(start.x() + 30, start.y());
     QPointF mid2(mid1.x(), end.y() - 30);
@@ -457,7 +457,7 @@ QPointF Workspace::snapToGrid(const QPointF& point) const {
     );
 }
 
-void Workspace::connectPinToGPIO(VirtualComponent* component, int component_pin, int gpio_pin) {
+void esp32sim::Workspace::connectPinToGPIO(VirtualComponent* component, int component_pin, int gpio_pin) {
     // Find or create wire
     Wire wire;
     wire.component = component;
@@ -473,7 +473,7 @@ void Workspace::connectPinToGPIO(VirtualComponent* component, int component_pin,
     update();
 }
 
-void Workspace::disconnectPinFromGPIO(int gpio_pin) {
+void esp32sim::Workspace::disconnectPinFromGPIO(int gpio_pin) {
     auto it = std::remove_if(wires_.begin(), wires_.end(),
                             [gpio_pin](const Wire& w) { return w.gpio_pin == gpio_pin; });
     if (it != wires_.end()) {
@@ -484,20 +484,20 @@ void Workspace::disconnectPinFromGPIO(int gpio_pin) {
     }
 }
 
-void Workspace::deleteSelected() {
+void esp32sim::Workspace::deleteSelected() {
     if (selected_component_) {
         removeComponent(selected_component_);
     }
 }
 
-void Workspace::copySelected() {
+void esp32sim::Workspace::copySelected() {
     // Simple copy - serialize selected component to clipboard
     if (selected_component_) {
         clipboard_ = { selected_component_ };
     }
 }
 
-void Workspace::paste() {
+void esp32sim::Workspace::paste() {
     // Paste from clipboard
     for (auto comp : clipboard_) {
         QString data = QString::fromStdString(comp->serialize());
@@ -510,7 +510,7 @@ void Workspace::paste() {
     }
 }
 
-void Workspace::selectAll() {
+void esp32sim::Workspace::selectAll() {
     selected_components_.clear();
     for (auto& comp : components_) {
         selected_components_.push_back(comp.get());
@@ -522,14 +522,14 @@ void Workspace::selectAll() {
     Q_EMIT selectionChanged(selected_component_);
 }
 
-void Workspace::updateSelectionRect() {
+void esp32sim::Workspace::updateSelectionRect() {
     if (selected_component_) {
         selection_rect_ = selected_component_->boundingRect().toRect()
                                 .translated(selected_component_->position().toPoint());
     }
 }
 
-void Workspace::createContextMenu(const QPoint& pos) {
+void esp32sim::Workspace::createContextMenu(const QPoint& pos) {
     QMenu menu(this);
 
     QAction* add_led = menu.addAction("Add LED");
@@ -547,7 +547,7 @@ void Workspace::createContextMenu(const QPoint& pos) {
     // ... more actions
 }
 
-void Workspace::handlePinConnection(int component_pin) {
+void esp32sim::Workspace::handlePinConnection(int component_pin) {
     // Start wiring mode
     wiring_active_ = true;
     wiring_component_pin_ = component_pin;
@@ -559,11 +559,11 @@ void Workspace::handlePinConnection(int component_pin) {
     }
 }
 
-void Workspace::updateWirePaths() {
+void esp32sim::Workspace::updateWirePaths() {
     // Recalculate wire positions
 }
 
-void Workspace::loadDefaultComponents() {
+void esp32sim::Workspace::loadDefaultComponents() {
     // Add demo components
     auto led = std::make_unique<LEDComponent>();
     led->setName("LED1");
@@ -578,3 +578,6 @@ void Workspace::loadDefaultComponents() {
 }
 
 } // namespace esp32sim
+void esp32sim::Workspace::showContextMenu(const QPoint& pos) { createContextMenu(pos); }
+void esp32sim::Workspace::resizeEvent(QResizeEvent*) {}
+void esp32sim::Workspace::dragLeaveEvent(QDragLeaveEvent*) {}

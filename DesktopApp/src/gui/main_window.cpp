@@ -67,7 +67,7 @@ MainWindow::~MainWindow() {
     // Children will be auto-deleted
 }
 
-void MainWindow::setupUI() {
+void esp32sim::MainWindow::setupUI() {
     // Central widget: splitter with workspace and pinout
     QSplitter* central_splitter = new QSplitter(Qt::Horizontal, this);
 
@@ -84,7 +84,7 @@ void MainWindow::setupUI() {
     setCentralWidget(central_splitter);
 }
 
-void MainWindow::createMenus() {
+void esp32sim::MainWindow::createMenus() {
     // File menu
     file_menu_ = menuBar()->addMenu("&File");
 
@@ -138,7 +138,7 @@ void MainWindow::createMenus() {
     help_menu_->addAction("&Documentation", this, [](){ /* open browser */ });
 }
 
-void MainWindow::createToolbars() {
+void esp32sim::MainWindow::createToolbars() {
     // Simulation toolbar
     QToolBar* sim_toolbar = addToolBar("Simulation");
     sim_toolbar->addAction(action_start_);
@@ -157,7 +157,7 @@ void MainWindow::createToolbars() {
     sim_toolbar->addWidget(speed_slider);
 }
 
-void MainWindow::createStatusBar() {
+void esp32sim::MainWindow::createStatusBar() {
     statusBar()->setSizeGripEnabled(true);
 
     // Permanent widgets
@@ -169,7 +169,7 @@ void MainWindow::createStatusBar() {
     status_timer->start(100);  // 10 Hz
 }
 
-void MainWindow::createDockWidgets() {
+void esp32sim::MainWindow::createDockWidgets() {
     // Console dock (bottom)
     QDockWidget* console_dock = new QDockWidget("Console", this);
     console_panel_ = new ConsolePanel(engine_, this);
@@ -208,7 +208,7 @@ void MainWindow::createDockWidgets() {
     addDockWidget(Qt::LeftDockWidgetArea, lib_dock);
 }
 
-void MainWindow::setupConnections() {
+void esp32sim::MainWindow::setupConnections() {
     // Engine signals
     connect(engine_, &SimulationEngine::stateChanged,
             this, &MainWindow::onSimulationStateChanged);
@@ -238,12 +238,12 @@ void MainWindow::setupConnections() {
             this, [](){ /* clear log */ });
 }
 
-void MainWindow::newProject() {
+void esp32sim::MainWindow::newProject() {
     // TODO: Implement new project
     QMessageBox::information(this, "New Project", "New project functionality not yet implemented");
 }
 
-void MainWindow::openProject() {
+void esp32sim::MainWindow::openProject() {
     QString filename = QFileDialog::getOpenFileName(
         this, "Open Project", "", "ESP32 Simulator Projects (*.esp32sim);;All Files (*)");
 
@@ -252,7 +252,7 @@ void MainWindow::openProject() {
     }
 }
 
-void MainWindow::saveProject() {
+void esp32sim::MainWindow::saveProject() {
     if (current_project_file_.isEmpty()) {
         saveProjectAs();
     } else {
@@ -260,7 +260,7 @@ void MainWindow::saveProject() {
     }
 }
 
-void MainWindow::saveProjectAs() {
+void esp32sim::MainWindow::saveProjectAs() {
     QString filename = QFileDialog::getSaveFileName(
         this, "Save Project As", "", "ESP32 Simulator Projects (*.esp32sim);;All Files (*)");
 
@@ -270,7 +270,7 @@ void MainWindow::saveProjectAs() {
     }
 }
 
-void MainWindow::loadFirmware() {
+void esp32sim::MainWindow::loadFirmware() {
     QString filename = QFileDialog::getOpenFileName(
         this, "Load Firmware", "", "ELF Files (*.elf);;All Files (*)");
 
@@ -279,27 +279,27 @@ void MainWindow::loadFirmware() {
     }
 }
 
-void MainWindow::startSimulation() {
+void esp32sim::MainWindow::startSimulation() {
     engine_->start();
 }
 
-void MainWindow::pauseSimulation() {
+void esp32sim::MainWindow::pauseSimulation() {
     engine_->pause();
 }
 
-void MainWindow::stopSimulation() {
+void esp32sim::MainWindow::stopSimulation() {
     engine_->stop();
 }
 
-void MainWindow::stepSimulation() {
+void esp32sim::MainWindow::stepSimulation() {
     engine_->step();
 }
 
-void MainWindow::resetSimulation() {
+void esp32sim::MainWindow::resetSimulation() {
     engine_->reset();
 }
 
-void MainWindow::showAbout() {
+void esp32sim::MainWindow::showAbout() {
     QMessageBox::about(this, "About ESP32 Simulator",
                        "<h3>ESP32 Virtual Hardware Simulator</h3>"
                        "<p>Version 1.0.0</p>"
@@ -307,12 +307,12 @@ void MainWindow::showAbout() {
                        "<p>&copy; 2025 ESP32 Simulator Project</p>");
 }
 
-void MainWindow::showSettings() {
+void esp32sim::MainWindow::showSettings() {
     // Show settings dialog
     QMessageBox::information(this, "Settings", "Settings dialog not yet implemented");
 }
 
-void MainWindow::updateStatus() {
+void esp32sim::MainWindow::updateStatus() {
     if (!engine_) return;
     QString state_str;
     switch (engine_->state()) {
@@ -329,7 +329,7 @@ void MainWindow::updateStatus() {
     statusBar()->showMessage(msg);
 }
 
-void MainWindow::onFirmwareLoaded(bool success, const QString& error_msg) {
+void esp32sim::MainWindow::onFirmwareLoaded(bool success, const QString& error_msg) {
     if (success) {
         const auto& info = engine_->firmwareInfo();
         statusBar()->showMessage(
@@ -342,7 +342,7 @@ void MainWindow::onFirmwareLoaded(bool success, const QString& error_msg) {
     }
 }
 
-void MainWindow::onSimulationStateChanged(SimulationState state) {
+void esp32sim::MainWindow::onSimulationStateChanged(SimulationState state) {
     updateUIBasedOnState();
 
     QString state_text;
@@ -356,7 +356,7 @@ void MainWindow::onSimulationStateChanged(SimulationState state) {
     statusBar()->showMessage(state_text, 2000);
 }
 
-void MainWindow::updateUIBasedOnState() {
+void esp32sim::MainWindow::updateUIBasedOnState() {
     bool running = engine_->isRunning();
 
     action_start_->setEnabled(!running);
@@ -366,44 +366,44 @@ void MainWindow::updateUIBasedOnState() {
     action_reset_->setEnabled(!running);
 }
 
-void MainWindow::onPinSelection(int pin, QPoint /*global_pos*/) {
+void esp32sim::MainWindow::onPinSelection(int pin, QPoint /*global_pos*/) {
     // Select pin in workspace or show info
     QString msg = QString("GPIO%1 selected").arg(pin);
     statusBar()->showMessage(msg);
 }
 
-void MainWindow::onPinContextMenu(int pin, QPoint global_pos) {
+void esp32sim::MainWindow::onPinContextMenu(int pin, QPoint global_pos) {
     pinout_panel_->showPinContextMenu(pin, global_pos);
 }
 
-void MainWindow::onComponentAdded(VirtualComponent* component) {
+void esp32sim::MainWindow::onComponentAdded(VirtualComponent* component) {
     LOG_DEBUG("Component added: {}", component->name());
 }
 
-void MainWindow::onComponentSelected(VirtualComponent* component) {
+void esp32sim::MainWindow::onComponentSelected(VirtualComponent* component) {
     if (component) {
         properties_panel_->setComponent(component);
     }
 }
 
-void MainWindow::loadSettings() {
+void esp32sim::MainWindow::loadSettings() {
     // Load window geometry, recent files, etc.
     QSettings settings("ESP32Sim", "VirtualHardwareSimulator");
     restoreGeometry(settings.value("mainwindow/geometry").toByteArray());
     restoreState(settings.value("mainwindow/state").toByteArray());
 }
 
-void MainWindow::saveSettings() {
+void esp32sim::MainWindow::saveSettings() {
     QSettings settings("ESP32Sim", "VirtualHardwareSimulator");
     settings.setValue("mainwindow/geometry", saveGeometry());
     settings.setValue("mainwindow/state", saveState());
 }
 
-void MainWindow::selectAll() {
+void esp32sim::MainWindow::selectAll() {
     workspace_->selectAll();
 }
 
-void MainWindow::closeEvent(QCloseEvent* event) {
+void esp32sim::MainWindow::closeEvent(QCloseEvent* event) {
     // Confirm if simulation running
     if (engine_->isRunning()) {
         auto reply = QMessageBox::question(this, "Confirm Exit",
@@ -419,3 +419,5 @@ void MainWindow::closeEvent(QCloseEvent* event) {
 }
 
 } // namespace esp32sim
+void esp32sim::MainWindow::toggleBreakpoint(uint32_t) {}
+void esp32sim::MainWindow::onPinStateChanged(uint8_t, esp32sim::GPIOLevel) {}

@@ -71,11 +71,26 @@ include CMakeFiles/simulator.dir/flags.make
 CMakeFiles/simulator.dir/codegen:
 .PHONY : CMakeFiles/simulator.dir/codegen
 
+CMakeFiles/simulator.dir/simulator_autogen/mocs_compilation.cpp.obj: CMakeFiles/simulator.dir/flags.make
+CMakeFiles/simulator.dir/simulator_autogen/mocs_compilation.cpp.obj: CMakeFiles/simulator.dir/includes_CXX.rsp
+CMakeFiles/simulator.dir/simulator_autogen/mocs_compilation.cpp.obj: simulator_autogen/mocs_compilation.cpp
+CMakeFiles/simulator.dir/simulator_autogen/mocs_compilation.cpp.obj: CMakeFiles/simulator.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="D:\laragon\www\Build ESP32 Smail GUI OS\DesktopApp\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/simulator.dir/simulator_autogen/mocs_compilation.cpp.obj"
+	C:\Qt\Tools\mingw1310_64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/simulator.dir/simulator_autogen/mocs_compilation.cpp.obj -MF CMakeFiles\simulator.dir\simulator_autogen\mocs_compilation.cpp.obj.d -o CMakeFiles\simulator.dir\simulator_autogen\mocs_compilation.cpp.obj -c "D:\laragon\www\Build ESP32 Smail GUI OS\DesktopApp\cmake-build-debug\simulator_autogen\mocs_compilation.cpp"
+
+CMakeFiles/simulator.dir/simulator_autogen/mocs_compilation.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/simulator.dir/simulator_autogen/mocs_compilation.cpp.i"
+	C:\Qt\Tools\mingw1310_64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\laragon\www\Build ESP32 Smail GUI OS\DesktopApp\cmake-build-debug\simulator_autogen\mocs_compilation.cpp" > CMakeFiles\simulator.dir\simulator_autogen\mocs_compilation.cpp.i
+
+CMakeFiles/simulator.dir/simulator_autogen/mocs_compilation.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/simulator.dir/simulator_autogen/mocs_compilation.cpp.s"
+	C:\Qt\Tools\mingw1310_64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\laragon\www\Build ESP32 Smail GUI OS\DesktopApp\cmake-build-debug\simulator_autogen\mocs_compilation.cpp" -o CMakeFiles\simulator.dir\simulator_autogen\mocs_compilation.cpp.s
+
 CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/iss/xtensa_iss.cpp.obj: CMakeFiles/simulator.dir/flags.make
 CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/iss/xtensa_iss.cpp.obj: CMakeFiles/simulator.dir/includes_CXX.rsp
 CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/iss/xtensa_iss.cpp.obj: D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/simulator/core/iss/xtensa_iss.cpp
 CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/iss/xtensa_iss.cpp.obj: CMakeFiles/simulator.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="D:\laragon\www\Build ESP32 Smail GUI OS\DesktopApp\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/iss/xtensa_iss.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="D:\laragon\www\Build ESP32 Smail GUI OS\DesktopApp\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/iss/xtensa_iss.cpp.obj"
 	C:\Qt\Tools\mingw1310_64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/iss/xtensa_iss.cpp.obj -MF CMakeFiles\simulator.dir\D_\laragon\www\Build_ESP32_Smail_GUI_OS\simulator\core\iss\xtensa_iss.cpp.obj.d -o CMakeFiles\simulator.dir\D_\laragon\www\Build_ESP32_Smail_GUI_OS\simulator\core\iss\xtensa_iss.cpp.obj -c "D:\laragon\www\Build ESP32 Smail GUI OS\simulator\core\iss\xtensa_iss.cpp"
 
 CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/iss/xtensa_iss.cpp.i: cmake_force
@@ -90,7 +105,7 @@ CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/
 CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/memory/memory_model.cpp.obj: CMakeFiles/simulator.dir/includes_CXX.rsp
 CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/memory/memory_model.cpp.obj: D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/simulator/core/memory/memory_model.cpp
 CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/memory/memory_model.cpp.obj: CMakeFiles/simulator.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="D:\laragon\www\Build ESP32 Smail GUI OS\DesktopApp\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/memory/memory_model.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="D:\laragon\www\Build ESP32 Smail GUI OS\DesktopApp\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/memory/memory_model.cpp.obj"
 	C:\Qt\Tools\mingw1310_64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/memory/memory_model.cpp.obj -MF CMakeFiles\simulator.dir\D_\laragon\www\Build_ESP32_Smail_GUI_OS\simulator\core\memory\memory_model.cpp.obj.d -o CMakeFiles\simulator.dir\D_\laragon\www\Build_ESP32_Smail_GUI_OS\simulator\core\memory\memory_model.cpp.obj -c "D:\laragon\www\Build ESP32 Smail GUI OS\simulator\core\memory\memory_model.cpp"
 
 CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/memory/memory_model.cpp.i: cmake_force
@@ -105,7 +120,7 @@ CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/
 CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/scheduler/event_scheduler.cpp.obj: CMakeFiles/simulator.dir/includes_CXX.rsp
 CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/scheduler/event_scheduler.cpp.obj: D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/simulator/core/scheduler/event_scheduler.cpp
 CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/scheduler/event_scheduler.cpp.obj: CMakeFiles/simulator.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="D:\laragon\www\Build ESP32 Smail GUI OS\DesktopApp\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/scheduler/event_scheduler.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="D:\laragon\www\Build ESP32 Smail GUI OS\DesktopApp\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/scheduler/event_scheduler.cpp.obj"
 	C:\Qt\Tools\mingw1310_64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/scheduler/event_scheduler.cpp.obj -MF CMakeFiles\simulator.dir\D_\laragon\www\Build_ESP32_Smail_GUI_OS\simulator\core\scheduler\event_scheduler.cpp.obj.d -o CMakeFiles\simulator.dir\D_\laragon\www\Build_ESP32_Smail_GUI_OS\simulator\core\scheduler\event_scheduler.cpp.obj -c "D:\laragon\www\Build ESP32 Smail GUI OS\simulator\core\scheduler\event_scheduler.cpp"
 
 CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/scheduler/event_scheduler.cpp.i: cmake_force
@@ -120,7 +135,7 @@ CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/
 CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/elf_loader/elf_loader.cpp.obj: CMakeFiles/simulator.dir/includes_CXX.rsp
 CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/elf_loader/elf_loader.cpp.obj: D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/simulator/core/elf_loader/elf_loader.cpp
 CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/elf_loader/elf_loader.cpp.obj: CMakeFiles/simulator.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="D:\laragon\www\Build ESP32 Smail GUI OS\DesktopApp\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/elf_loader/elf_loader.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="D:\laragon\www\Build ESP32 Smail GUI OS\DesktopApp\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/elf_loader/elf_loader.cpp.obj"
 	C:\Qt\Tools\mingw1310_64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/elf_loader/elf_loader.cpp.obj -MF CMakeFiles\simulator.dir\D_\laragon\www\Build_ESP32_Smail_GUI_OS\simulator\core\elf_loader\elf_loader.cpp.obj.d -o CMakeFiles\simulator.dir\D_\laragon\www\Build_ESP32_Smail_GUI_OS\simulator\core\elf_loader\elf_loader.cpp.obj -c "D:\laragon\www\Build ESP32 Smail GUI OS\simulator\core\elf_loader\elf_loader.cpp"
 
 CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/elf_loader/elf_loader.cpp.i: cmake_force
@@ -133,6 +148,7 @@ CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/
 
 # Object files for target simulator
 simulator_OBJECTS = \
+"CMakeFiles/simulator.dir/simulator_autogen/mocs_compilation.cpp.obj" \
 "CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/iss/xtensa_iss.cpp.obj" \
 "CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/memory/memory_model.cpp.obj" \
 "CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/scheduler/event_scheduler.cpp.obj" \
@@ -141,13 +157,14 @@ simulator_OBJECTS = \
 # External object files for target simulator
 simulator_EXTERNAL_OBJECTS =
 
+lib/libsimulator.a: CMakeFiles/simulator.dir/simulator_autogen/mocs_compilation.cpp.obj
 lib/libsimulator.a: CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/iss/xtensa_iss.cpp.obj
 lib/libsimulator.a: CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/memory/memory_model.cpp.obj
 lib/libsimulator.a: CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/scheduler/event_scheduler.cpp.obj
 lib/libsimulator.a: CMakeFiles/simulator.dir/D_/laragon/www/Build_ESP32_Smail_GUI_OS/simulator/core/elf_loader/elf_loader.cpp.obj
 lib/libsimulator.a: CMakeFiles/simulator.dir/build.make
 lib/libsimulator.a: CMakeFiles/simulator.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="D:\laragon\www\Build ESP32 Smail GUI OS\DesktopApp\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX static library lib\libsimulator.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="D:\laragon\www\Build ESP32 Smail GUI OS\DesktopApp\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX static library lib\libsimulator.a"
 	$(CMAKE_COMMAND) -P CMakeFiles\simulator.dir\cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\simulator.dir\link.txt --verbose=$(VERBOSE)
 

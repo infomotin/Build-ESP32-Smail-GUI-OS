@@ -52,7 +52,7 @@ LogicAnalyzer::LogicAnalyzer(SimulationEngine* engine, QWidget* parent)
 
 LogicAnalyzer::~LogicAnalyzer() = default;
 
-void LogicAnalyzer::initializeUI() {
+void esp32sim::LogicAnalyzer::initializeUI() {
     // Create controls
     QVBoxLayout* layout = new QVBoxLayout(this);
     setLayout(layout);
@@ -92,7 +92,7 @@ void LogicAnalyzer::initializeUI() {
     layout->addLayout(controls);
 }
 
-void LogicAnalyzer::paintEvent(QPaintEvent* event) {
+void esp32sim::LogicAnalyzer::paintEvent(QPaintEvent* event) {
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
     painter.fillRect(rect(), QColor(30, 30, 30));
@@ -107,12 +107,12 @@ void LogicAnalyzer::paintEvent(QPaintEvent* event) {
     QWidget::paintEvent(event);
 }
 
-void LogicAnalyzer::drawBackground(QPainter* painter) {
+void esp32sim::LogicAnalyzer::drawBackground(QPainter* painter) {
     // Dark background
     painter->fillRect(rect(), QColor(40, 40, 40));
 }
 
-void LogicAnalyzer::drawGrid(QPainter* painter) {
+void esp32sim::LogicAnalyzer::drawGrid(QPainter* painter) {
     painter->setPen(QPen(QColor(80, 80, 80), 0.5));
 
     // Vertical grid (time)
@@ -128,7 +128,7 @@ void LogicAnalyzer::drawGrid(QPainter* painter) {
     }
 }
 
-void LogicAnalyzer::drawWaveforms(QPainter* painter) {
+void esp32sim::LogicAnalyzer::drawWaveforms(QPainter* painter) {
     if (waveform_buffer_.empty()) return;
 
     for (size_t ch = 0; ch < channels_.size(); ch++) {
@@ -158,7 +158,7 @@ void LogicAnalyzer::drawWaveforms(QPainter* painter) {
     }
 }
 
-void LogicAnalyzer::drawChannelLabels(QPainter* painter) {
+void esp32sim::LogicAnalyzer::drawChannelLabels(QPainter* painter) {
     painter->setPen(Qt::white);
     QFont font = painter->font();
     font.setPointSize(8);
@@ -170,7 +170,7 @@ void LogicAnalyzer::drawChannelLabels(QPainter* painter) {
     }
 }
 
-void LogicAnalyzer::drawCursors(QPainter* painter) {
+void esp32sim::LogicAnalyzer::drawCursors(QPainter* painter) {
     if (!show_cursors_) return;
 
     painter->setPen(QPen(Qt::yellow, 1, Qt::DashLine));
@@ -192,7 +192,7 @@ void LogicAnalyzer::drawCursors(QPainter* painter) {
     }
 }
 
-void LogicAnalyzer::drawAnnotations(QPainter* painter) {
+void esp32sim::LogicAnalyzer::drawAnnotations(QPainter* painter) {
     for (const auto& ann : annotations_) {
         int x = timeToX(ann.timestamp);
         painter->setPen(QPen(ann.color, 1, Qt::DashLine));
@@ -201,7 +201,7 @@ void LogicAnalyzer::drawAnnotations(QPainter* painter) {
     }
 }
 
-void LogicAnalyzer::updateFromEngine() {
+void esp32sim::LogicAnalyzer::updateFromEngine() {
     if (!engine_ || !engine_->isRunning()) return;
 
     // Capture current GPIO states
@@ -224,14 +224,14 @@ void LogicAnalyzer::updateFromEngine() {
     update();
 }
 
-void LogicAnalyzer::startCapture() {
+void esp32sim::LogicAnalyzer::startCapture() {
     capturing_ = true;
     trigger_armed_ = true;
     waveform_buffer_.clear();
     LOG_INFO("LogicAnalyzer capture started");
 }
 
-void LogicAnalyzer::stopCapture() {
+void esp32sim::LogicAnalyzer::stopCapture() {
     capturing_ = false;
     LOG_INFO("LogicAnalyzer capture stopped");
 }
@@ -271,11 +271,11 @@ bool LogicAnalyzer::exportToVCD(const std::string& filename) {
     return true;
 }
 
-void LogicAnalyzer::onAutoScrollToggled(bool checked) {
+void esp32sim::LogicAnalyzer::onAutoScrollToggled(bool checked) {
     auto_scroll_ = checked;
 }
 
-void LogicAnalyzer::onTimebaseChanged(int index) {
+void esp32sim::LogicAnalyzer::onTimebaseChanged(int index) {
     double scale_values[] = {100, 200, 500, 1000, 2000, 5000, 10000,
                              20000, 50000, 100000, 200000, 500000,
                              1000000, 2000000, 5000000, 10000000};
@@ -283,9 +283,14 @@ void LogicAnalyzer::onTimebaseChanged(int index) {
     update();
 }
 
-void LogicAnalyzer::setSettings(const CaptureSettings& settings) {
+void esp32sim::LogicAnalyzer::setSettings(const CaptureSettings& settings) {
     settings_ = settings;
     channels_.resize(settings.num_channels);
 }
 
 } // namespace esp32sim
+void esp32sim::LogicAnalyzer::mousePressEvent(QMouseEvent*) {}
+void esp32sim::LogicAnalyzer::mouseReleaseEvent(QMouseEvent*) {}
+void esp32sim::LogicAnalyzer::mouseMoveEvent(QMouseEvent*) {}
+void esp32sim::LogicAnalyzer::wheelEvent(QWheelEvent*) {}
+void esp32sim::LogicAnalyzer::resizeEvent(QResizeEvent*) {}
