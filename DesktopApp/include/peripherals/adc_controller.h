@@ -182,7 +182,7 @@ private:
     Stats stats_;
 
     // Mutex
-    std::mutex mutex_;
+    mutable std::mutex mutex_;
 
     // Internal methods
     void initializePinMapping();

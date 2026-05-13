@@ -8,8 +8,8 @@
 
 namespace esp32sim {
 
-SPIController::SPIController(uint8_t bus_id, MemoryModel* memory)
-    : bus_id_(bus_id), memory_(memory) {
+SPIController::SPIController(uint8_t bus_id, MemoryModel* memory, QObject* parent)
+    : QObject(parent), bus_id_(bus_id), memory_(memory) {
 }
 
 SPIController::~SPIController() = default;
@@ -23,42 +23,39 @@ void SPIController::reset() {
     LOG_DEBUG("SPIController {}: Reset", bus_id_);
 }
 
-void SPIController::setMode(SPIMode mode) {
-    // stub
+void SPIController::configure(uint32_t baudrate_hz, SPIMode mode, uint8_t data_bits, SPITransferDirection direction) {
+    baudrate_hz_ = baudrate_hz;
+    mode_ = mode;
+    data_bits_ = data_bits;
+    direction_ = direction;
+    LOG_DEBUG("SPIController {}: Configured {}Hz, Mode {}", bus_id_, baudrate_hz_, static_cast<int>(mode_));
 }
 
-void SPIController::setClockSpeed(uint32_t speed_hz) {
-    // stub
+std::vector<uint8_t> SPIController::transfer(const std::vector<uint8_t>& tx_data, uint32_t timeout_ms) {
+    LOG_DEBUG("SPIController {}: transfer ({} bytes) - stub", bus_id_, tx_data.size());
+    std::vector<uint8_t> rx_data(tx_data.size(), 0);
+    return rx_data;
 }
 
-void SPIController::setBitOrder(/*...*/) {
-    // stub
+void SPIController::transferFullDuplex(const uint8_t* tx_data, uint8_t* rx_data, size_t len, uint32_t timeout_ms) {
+    LOG_DEBUG("SPIController {}: transferFullDuplex ({} bytes) - stub", bus_id_, len);
 }
 
-void SPIController::setDataMode(uint8_t mode) {
-    // stub
+void SPIController::setCSPin(uint8_t cs_pin) {
+    cs_pin_ = cs_pin;
 }
 
-void SPIController::setFrequency(uint32_t freq) {
-    // stub
+void SPIController::registerSlaveDevice(std::shared_ptr<SPISlaveDevice> device) {
+    slave_devices_.push_back(device);
 }
 
-int SPIController::transfer(uint8_t* tx_data, uint8_t* rx_data, size_t len, uint32_t timeout_ms) {
-    LOG_DEBUG("SPIController {}: transfer ({} bytes) - stub", bus_id_, len);
-    return 0;
-}
-
-int SPIController::transferNB(uint8_t* tx_data, uint8_t* rx_data, size_t len) {
-    // stub
-    return 0;
-}
-
-void SPIController::addSlaveDevice(uint8_t cs_pin, const std::string& name) {
-    // stub
-}
-
-void SPIController::removeSlaveDevice(uint8_t cs_pin) {
-    // stub
+void SPIController::unregisterSlaveDevice(uint8_t cs_pin) {
+    for (auto it = slave_devices_.begin(); it != slave_devices_.end(); ++it) {
+        if ((*it)->cs_pin == cs_pin) {
+            slave_devices_.erase(it);
+            break;
+        }
+    }
 }
 
 void SPIController::tick(uint64_t elapsed_ns) {

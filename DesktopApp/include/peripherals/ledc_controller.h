@@ -140,7 +140,7 @@ public:
 private:
     MemoryModel* memory_ = nullptr;
     std::array<LEDCChannel, 16> channels_;
-    std::mutex mutex_;
+    mutable std::mutex mutex_;
 
     // High-speed timer reference
     uint64_t global_timer_ = 0;

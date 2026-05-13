@@ -151,6 +151,7 @@ private:
     QTableWidget* watchpoint_table_ = nullptr;
 
     // Internal methods
+    void setupUI();
     void setupRegisterTable();
     void updateRegisterTable();
     void updateMemoryDisplay(uint32_t address, uint32_t num_bytes = 256);

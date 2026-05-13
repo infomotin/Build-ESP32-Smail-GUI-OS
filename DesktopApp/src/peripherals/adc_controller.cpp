@@ -71,7 +71,7 @@ uint16_t ADCController::readRaw(uint8_t channel) {
     }
 
     // Get voltage
-    float voltage = getVoltage(channel);
+    float voltage = ch.voltage;
 
     // Convert to raw value
     uint16_t raw = static_cast<uint16_t>((voltage / 3.3f) * 4095.0f);

@@ -6,6 +6,13 @@
 #include "peripherals/ledc_controller.h"
 #include "utils/logger.h"
 
+#ifndef ESP_OK
+#define ESP_OK 0
+#endif
+#ifndef ESP_ERR_INVALID_ARG
+#define ESP_ERR_INVALID_ARG -1
+#endif
+
 namespace esp32sim {
 
 LEDCController::LEDCController(MemoryModel* memory) : memory_(memory) {

@@ -9,6 +9,8 @@
 
 namespace esp32sim {
 
+std::vector<std::string> split(const std::string& s, char delim);
+
 LEDComponent::LEDComponent(QObject* parent)
     : VirtualComponent("LED", parent) {
 }
@@ -32,7 +34,7 @@ void LEDComponent::paint(QPainter* painter) {
     painter->setPen(Qt::NoPen);
 
     // LED color based on state
-    if (isLit_) {
+    if (is_lit_) {
         QColor lit_color = color_;
         lit_color.setAlpha(255);
         painter->setBrush(lit_color);
@@ -69,12 +71,12 @@ void LEDComponent::paint(QPainter* painter) {
 
     // Label
     painter->setPen(Qt::black);
-    painter->drawText(QRectF(0, 28, 40, 10), Qt::AlignCenter, QString::fromStdString(name_));
+    painter->drawText(QRectF(0, 28, 40, 10), Qt::AlignCenter, name_);
 }
 
 void LEDComponent::mouseDoubleClickEvent(QPointF pos) {
     // Open properties dialog - for now toggle state
-    setLit(!isLit_);
+    setLit(!is_lit_);
     emitChanged();
 }
 
@@ -106,8 +108,8 @@ bool LEDComponent::isPinConnected(int pin) const {
 
 std::string LEDComponent::serialize() const {
     // Simple serialization
-    return "LED:" + name_ + ":" + std::to_string(connected_pin_) + ":" +
-           (isLit_ ? "1" : "0") + ":" + color_.name().toStdString();
+    return "LED:" + name_.toStdString() + ":" + std::to_string(connected_pin_) + ":" +
+           (is_lit_ ? "1" : "0") + ":" + color_.name().toStdString();
 }
 
 void LEDComponent::deserialize(const std::string& data) {
@@ -115,7 +117,7 @@ void LEDComponent::deserialize(const std::string& data) {
     // Format: LED:name:pin:state:color
     auto parts = split(data, ':');
     if (parts.size() >= 5) {
-        setName(parts[1]);
+        setName(QString::fromStdString(parts[1]));
         connected_pin_ = std::stoi(parts[2]);
         setLit(parts[3] == "1");
         setColor(QColor(QString::fromStdString(parts[4])));
@@ -133,9 +135,9 @@ std::string LEDComponent::toJSON() const {
     // Return JSON representation
     return "{"
         "\"type\":\"LED\","
-        "\"name\":\"" + name_ + "\","
+        "\"name\":\"" + name_.toStdString() + "\","
         "\"pin\":" + std::to_string(connected_pin_) + ","
-        "\"lit\":" + (isLit_ ? "true" : "false") + ","
+        "\"lit\":" + (is_lit_ ? "true" : "false") + ","
         "\"color\":\"" + color_.name().toStdString() + "\""
         "}";
 }
@@ -143,14 +145,6 @@ std::string LEDComponent::toJSON() const {
 void LEDComponent::fromJSON(const std::string& json) {
     // Parse and restore
     // Simplified
-}
-
-void LEDComponent::emitChanged() {
-    Q_EMIT componentChanged();
-}
-
-void LEDComponent::emitConnectionChanged(int pin, bool connected) {
-    Q_EMIT connectionChanged(pin, connected);
 }
 
 std::vector<std::string> split(const std::string& s, char delim) {

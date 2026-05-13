@@ -8,6 +8,13 @@
 #include <algorithm>
 #include <cmath>
 
+#ifndef ESP_OK
+#define ESP_OK 0
+#endif
+#ifndef ESP_ERR_INVALID_ARG
+#define ESP_ERR_INVALID_ARG -1
+#endif
+
 namespace esp32sim {
 
 GPIOController::GPIOController(MemoryModel* memory)
@@ -164,7 +171,7 @@ void GPIOController::setExternalVoltage(uint8_t pin, float voltage) {
         p.mode == GPIOMode::INPUT_PULLUP ||
         p.mode == GPIOMode::INPUT_PULLDOWN ||
         p.mode == GPIOMode::ADC_INPUT) {
-        bool new_state = schmittTrigger(pin, voltage);
+        bool new_state = (schmittTrigger(pin, voltage) == GPIOLevel::HIGH);
         if (new_state != p.schmitt_output) {
             p.schmitt_output = new_state;
             p.level = new_state ? GPIOLevel::HIGH : GPIOLevel::LOW;
@@ -343,7 +350,7 @@ void GPIOController::checkInterruptCondition(uint8_t pin) {
     }
 }
 
-GPIOLevel GPIOController::schmittTrigger(uint8_t /*pin*/, float voltage) const {
+GPIOLevel GPIOController::schmittTrigger(uint8_t /*pin*/, float voltage) {
     static constexpr float V_high = 1.4f;
     static constexpr float V_low = 1.0f;
     static std::map<uint8_t, bool> last_state;

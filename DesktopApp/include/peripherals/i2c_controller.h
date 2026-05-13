@@ -11,6 +11,8 @@
 #include <functional>
 #include <memory>
 #include <mutex>
+#include <atomic>
+#include <QObject>
 
 #include "simulator/core/memory/memory_model.h"
 
@@ -78,9 +80,10 @@ struct I2CSlaveDevice {
  * - Multiple slave device support
  * - Protocol decoding integration
  */
-class I2CController {
+class I2CController : public QObject {
+    Q_OBJECT
 public:
-    I2CController(uint8_t bus_id, MemoryModel* memory);
+    I2CController(uint8_t bus_id, MemoryModel* memory, QObject* parent = nullptr);
     ~I2CController();
 
     /**

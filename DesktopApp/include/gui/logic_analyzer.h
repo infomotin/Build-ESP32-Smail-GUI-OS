@@ -26,6 +26,8 @@ QT_END_NAMESPACE
 
 namespace esp32sim {
 
+class SimulationEngine;
+
 /**
  * @struct WaveformSample
  * @brief Single sample in the waveform buffer

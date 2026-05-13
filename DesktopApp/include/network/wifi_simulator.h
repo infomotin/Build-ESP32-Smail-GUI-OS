@@ -10,6 +10,7 @@
 #include <atomic>
 #include <mutex>
 #include <map>
+#include <QObject>
 
 namespace esp32sim {
 
@@ -25,10 +26,11 @@ namespace esp32sim {
  * - Packet loss simulation
  * - Traffic routing between simulated firmware and host network
  */
-class WiFiSimulator {
+class WiFiSimulator : public QObject {
+    Q_OBJECT
 public:
-    explicit WiFiSimulator();
-    ~WiFiSimulator();
+    explicit WiFiSimulator(QObject* parent = nullptr);
+    ~WiFiSimulator() override;
 
     /**
      * @brief Initialize Wi-Fi simulation

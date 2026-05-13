@@ -12,6 +12,7 @@
 #include <atomic>
 #include <mutex>
 #include <deque>
+#include <QObject>
 
 #include "simulator/core/memory/memory_model.h"
 
@@ -64,9 +65,10 @@ struct UARTFrame {
  * - Hardware flow control (RTS/CTS)
  * - Break detection
  */
-class UARTController {
+class UARTController : public QObject {
+    Q_OBJECT
 public:
-    explicit UARTController(uint8_t port, MemoryModel* memory);
+    explicit UARTController(uint8_t port, MemoryModel* memory, QObject* parent = nullptr);
     ~UARTController();
 
     /**
@@ -219,6 +221,7 @@ private:
 
     // Bit timing
     uint64_t bit_time_ns_ = 0;  // Nanoseconds per bit
+    uint64_t half_period_ns_ = 0; // Half period in ns
     uint64_t bit_ticks_ = 0;    // Accumulated partial time
     uint64_t current_bit_time_ = 0;
 

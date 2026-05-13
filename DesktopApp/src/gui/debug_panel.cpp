@@ -14,6 +14,10 @@
 #include <QTreeWidget>
 #include <QComboBox>
 #include <QInputDialog>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QPushButton>
+#include <QLabel>
 
 namespace esp32sim {
 
@@ -127,7 +131,8 @@ void DebugPanel::updateRegisterTable() {
     }
 }
 
-void DebugPanel::updateMemoryDisplay(uint32_t address) {
+void DebugPanel::updateMemoryDisplay(uint32_t address, uint32_t num_bytes) {
+    Q_UNUSED(num_bytes);
     if (!memory_display_) return;
 
     QString text;

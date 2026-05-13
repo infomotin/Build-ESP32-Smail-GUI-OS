@@ -9,6 +9,8 @@
 
 namespace esp32sim {
 
+std::vector<std::string> split(const std::string& s, char delim);
+
 ButtonComponent::ButtonComponent(QObject* parent)
     : VirtualComponent("Button", parent) {
 }
@@ -91,14 +93,14 @@ bool ButtonComponent::isPinConnected(int pin) const {
 }
 
 std::string ButtonComponent::serialize() const {
-    return "BUTTON:" + name_ + ":" + std::to_string(connected_pin_) +
+    return "BUTTON:" + name_.toStdString() + ":" + std::to_string(connected_pin_) +
            ":" + (active_high_ ? "1" : "0");
 }
 
 void ButtonComponent::deserialize(const std::string& data) {
     auto parts = split(data, ':');
     if (parts.size() >= 4) {
-        setName(parts[1]);
+        setName(QString::fromStdString(parts[1]));
         connected_pin_ = std::stoi(parts[2]);
         setActiveHigh(parts[3] == "1");
     }
@@ -111,7 +113,7 @@ void ButtonComponent::onGPIOChanged(int pin, bool level) {
 std::string ButtonComponent::toJSON() const {
     return "{"
         "\"type\":\"BUTTON\","
-        "\"name\":\"" + name_ + "\","
+        "\"name\":\"" + name_.toStdString() + "\","
         "\"pin\":" + std::to_string(connected_pin_) + ","
         "\"activeHigh\":" + (active_high_ ? "true" : "false") +
         "}";
@@ -121,11 +123,7 @@ void ButtonComponent::fromJSON(const std::string&) {
     // TODO: Parse and restore
 }
 
-void ButtonComponent::setPressed(bool pressed) {
-    pressed_ = pressed;
-}
-
-std::vector<std::string> ButtonComponent::split(const std::string& s, char delim) {
+std::vector<std::string> split(const std::string& s, char delim) {
     std::vector<std::string> parts;
     size_t start = 0, end = 0;
     while ((end = s.find(delim, start)) != std::string::npos) {
@@ -147,7 +145,7 @@ QRectF ToggleSwitchComponent::boundingRect() const {
 
 void ToggleSwitchComponent::paint(QPainter* painter) {
     painter->setRenderHint(QPainter::Antialiasing);
-    QRect r = boundingRect();
+    QRectF r = boundingRect();
     QColor bg = on_ ? QColor(100, 200, 100) : QColor(200, 200, 200);
     painter->fillRect(r, bg);
     painter->setPen(QPen(Qt::black, 1));
@@ -204,13 +202,13 @@ void ToggleSwitchComponent::onGPIOChanged(int pin, bool level) {
 }
 
 std::string ToggleSwitchComponent::serialize() const {
-    return "TOGGLE:" + name_ + ":" + std::to_string(connected_pin_) + ":" + (on_ ? "1" : "0");
+    return "TOGGLE:" + name_.toStdString() + ":" + std::to_string(connected_pin_) + ":" + (on_ ? "1" : "0");
 }
 
 void ToggleSwitchComponent::deserialize(const std::string& data) {
     auto parts = split(data, ':');
     if (parts.size() >= 4) {
-        setName(parts[1]);
+        setName(QString::fromStdString(parts[1]));
         connected_pin_ = std::stoi(parts[2]);
         setOn(parts[3] == "1");
     }
@@ -219,7 +217,7 @@ void ToggleSwitchComponent::deserialize(const std::string& data) {
 std::string ToggleSwitchComponent::toJSON() const {
     return "{"
            "\"type\":\"TOGGLE\","
-           "\"name\":\"" + name_ + "\","
+           "\"name\":\"" + name_.toStdString() + "\","
            "\"pin\":" + std::to_string(connected_pin_) + ","
            "\"on\":" + (on_ ? "true" : "false") +
            "}";

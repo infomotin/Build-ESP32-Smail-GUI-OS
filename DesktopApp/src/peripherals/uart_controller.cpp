@@ -7,10 +7,20 @@
 #include "utils/logger.h"
 #include <cmath>
 
+#ifndef ESP_OK
+#define ESP_OK 0
+#endif
+#ifndef ESP_ERR_TIMEOUT
+#define ESP_ERR_TIMEOUT -1
+#endif
+#ifndef ESP_ERR_NOT_FOUND
+#define ESP_ERR_NOT_FOUND -2
+#endif
+
 namespace esp32sim {
 
-UARTController::UARTController(uint8_t port, MemoryModel* memory)
-    : port_(port), memory_(memory) {
+UARTController::UARTController(uint8_t port, MemoryModel* memory, QObject* parent)
+    : QObject(parent), port_(port), memory_(memory) {
 }
 
 UARTController::~UARTController() = default;

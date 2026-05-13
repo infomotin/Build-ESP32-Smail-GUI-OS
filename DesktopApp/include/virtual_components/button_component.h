@@ -50,6 +50,11 @@ public:
     bool isPressed() const { return pressed_; }
 
     /**
+     * @brief Set button pressed state
+     */
+    void setPressed(bool pressed) { pressed_ = pressed; emitChanged(); }
+
+    /**
      * @brief Get active level (true = active high)
      */
     bool activeHigh() const { return active_high_; }

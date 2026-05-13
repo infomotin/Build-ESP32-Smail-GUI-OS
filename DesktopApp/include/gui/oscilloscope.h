@@ -14,6 +14,7 @@
 #include <array>
 
 #include "simulator/core/memory/memory_model.h"
+#include "../simulation_engine.h"
 
 QT_BEGIN_NAMESPACE
 class QComboBox;
@@ -138,6 +139,9 @@ public:
      * @brief Clear all buffers
      */
     void clear();
+
+protected:
+    void paintEvent(QPaintEvent* event) override;
 
 public slots:
     /**

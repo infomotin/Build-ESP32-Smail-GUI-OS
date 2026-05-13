@@ -412,6 +412,7 @@ CMakeFiles/esp32_virtual_simulator.dir/src/gui/oscilloscope.cpp.obj: \
  C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/queue \
  C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_queue.h \
  D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/simulator/core/elf_loader/elf_loader.h \
+ D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/DesktopApp/include/peripherals/gpio_controller.h \
  D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/DesktopApp/include/utils/logger.h \
  C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cstdarg \
  C:/Qt/6.11.0/mingw_64/include/QtGui/QPaintEvent \

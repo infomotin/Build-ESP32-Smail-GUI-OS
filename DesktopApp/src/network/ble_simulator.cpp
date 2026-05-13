@@ -6,9 +6,19 @@
 #include "network/ble_simulator.h"
 #include "utils/logger.h"
 
+#ifndef ESP_OK
+#define ESP_OK 0
+#endif
+#ifndef ESP_ERR_INVALID_STATE
+#define ESP_ERR_INVALID_STATE -3
+#endif
+#ifndef ESP_ERR_NOT_FOUND
+#define ESP_ERR_NOT_FOUND -4
+#endif
+
 namespace esp32sim {
 
-BLESimulator::BLESimulator() = default;
+BLESimulator::BLESimulator(QObject* parent) : QObject(parent) {}
 
 BLESimulator::~BLESimulator() = default;
 
@@ -128,7 +138,7 @@ void BLESimulator::buildDefaultGATTDatabase() {
 
     // Device Information Service (0x180A)
     // Manufacturer Name String (0x2A29)
-    GATTCharacteristic manuf;
+    Characteristic manuf;
     manuf.handle = 1;
     manuf.value_handle = 2;
     manuf.properties = 0x02;  // READ
@@ -136,7 +146,7 @@ void BLESimulator::buildDefaultGATTDatabase() {
     characteristics_.push_back(manuf);
 
     // Battery Level (0x2A19)
-    GATTCharacteristic battery;
+    Characteristic battery;
     battery.handle = 3;
     battery.value_handle = 4;
     battery.properties = 0x12;  // READ | NOTIFY

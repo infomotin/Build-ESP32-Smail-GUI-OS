@@ -5,6 +5,7 @@
 
 #include "gui/oscilloscope.h"
 #include "simulation_engine.h"
+#include "peripherals/gpio_controller.h"
 #include "utils/logger.h"
 
 #include <QPainter>
@@ -94,14 +95,14 @@ void Oscilloscope::drawChannelWaveform(QPainter& painter, const AnalogChannel& c
     QColor color = ch.color;
     painter.setPen(QPen(color, 2));
 
-    int mid_y = height() / 2;
-    float v_per_px = (ch.vertical_scale_v_per_div * 8.0f) / height();
+    int mid_y = height / 2;
+    float v_per_px = (ch.vertical_scale_v_per_div * 8.0f) / height;
 
     // Draw waveform
     QPolygon poly;
     for (size_t i = 0; i < ch.buffer.size(); i++) {
         int x = timeToX(ch.buffer[i].timestamp);
-        int y = voltageToY(ch.buffer[i].voltage, ch - &channels_[0]);
+        int y = voltageToY(ch.buffer[i].voltage, &ch - &channels_[0]);
         poly << QPoint(x, y);
     }
 
@@ -199,8 +200,8 @@ void Oscilloscope::computeMeasurements(int channel) {
     bool last_above = (ch.buffer[0].voltage > 1.65f);
 
     for (const auto& sample : ch.buffer) {
-        m.min_v = std::min(m.min_v, sample.voltage);
-        m.max_v = std::max(m.max_v, sample.voltage);
+        m.min_v = std::min(m.min_v, static_cast<double>(sample.voltage));
+        m.max_v = std::max(m.max_v, static_cast<double>(sample.voltage));
         m.rms_v += sample.voltage * sample.voltage;
 
         bool above = (sample.voltage > 1.65f);

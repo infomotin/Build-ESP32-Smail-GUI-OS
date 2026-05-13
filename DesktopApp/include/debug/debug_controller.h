@@ -8,13 +8,15 @@
 #include <stdint.h>
 #include <vector>
 #include <set>
-#include <map>
 #include <functional>
 #include <memory>
 #include <mutex>
+#include <string>
 #include "simulator/core/iss/xtensa_iss.h"
 
 namespace esp32sim {
+
+struct SymbolInfo;
 
 /**
  * @class DebugController

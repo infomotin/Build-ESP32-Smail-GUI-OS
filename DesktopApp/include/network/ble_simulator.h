@@ -11,6 +11,7 @@
 #include <memory>
 #include <mutex>
 #include <atomic>
+#include <QObject>
 
 namespace esp32sim {
 
@@ -18,10 +19,11 @@ namespace esp32sim {
  * @class BLESimulator
  * @brief Simulates ESP32 BLE radio and GATT (stub)
  */
-class BLESimulator {
+class BLESimulator : public QObject {
+    Q_OBJECT
 public:
-    BLESimulator();
-    ~BLESimulator();
+    explicit BLESimulator(QObject* parent = nullptr);
+    ~BLESimulator() override;
 
     bool initialize();
     void reset();
@@ -39,6 +41,7 @@ public:
     int handleWrite(uint16_t attribute_handle, const std::vector<uint8_t>& value);
 
     // Notifications/Indications
+    int notifyCharacteristic(uint16_t characteristic_handle, const std::vector<uint8_t>& value);
     int sendNotification(uint16_t characteristic_handle, const std::vector<uint8_t>& value);
     int sendIndication(uint16_t characteristic_handle, const std::vector<uint8_t>& value);
 
@@ -64,7 +67,8 @@ signals:
 
 private:
     void buildDefaultGATTDatabase();
-    void handleDisconnection(uint16_t reason);
+    void handleConnection(const std::string& peer_addr);
+    void handleDisconnection(int reason);
 
     mutable std::mutex mutex_;
     std::atomic<bool> advertising_{false};

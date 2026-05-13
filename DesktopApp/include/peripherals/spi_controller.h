@@ -10,6 +10,7 @@
 #include <array>
 #include <atomic>
 #include <mutex>
+#include <QObject>
 
 #include "simulator/core/memory/memory_model.h"
 
@@ -60,9 +61,10 @@ struct SPISlaveDevice {
  * - Configurable bit rate
  * - CS line control
  */
-class SPIController {
+class SPIController : public QObject {
+    Q_OBJECT
 public:
-    explicit SPIController(uint8_t bus_id, MemoryModel* memory);
+    explicit SPIController(uint8_t bus_id, MemoryModel* memory, QObject* parent = nullptr);
     ~SPIController();
 
     /**

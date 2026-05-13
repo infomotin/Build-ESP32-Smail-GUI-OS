@@ -8,8 +8,8 @@
 
 namespace esp32sim {
 
-I2CController::I2CController(uint8_t bus_id, MemoryModel* memory)
-    : bus_id_(bus_id), memory_(memory) {
+I2CController::I2CController(uint8_t bus_id, MemoryModel* memory, QObject* parent)
+    : QObject(parent), bus_id_(bus_id), memory_(memory) {
 }
 
 I2CController::~I2CController() = default;
