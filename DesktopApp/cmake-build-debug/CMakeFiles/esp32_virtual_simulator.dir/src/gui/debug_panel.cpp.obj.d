@@ -431,13 +431,13 @@ CMakeFiles/esp32_virtual_simulator.dir/src/gui/debug_panel.cpp.obj: \
  C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/mutex \
  C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/std_mutex.h \
  C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/unique_lock.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QObject \
  D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/simulator/core/iss/xtensa_iss.h \
  D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/DesktopApp/include/simulation_engine.h \
  C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/condition_variable \
  C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/thread \
  C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/std_thread.h \
  C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/this_thread_sleep.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/QObject \
  D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/simulator/core/memory/memory_model.h \
  D:/laragon/www/Build\ ESP32\ Smail\ GUI\ OS/simulator/core/scheduler/event_scheduler.h \
  C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/queue \

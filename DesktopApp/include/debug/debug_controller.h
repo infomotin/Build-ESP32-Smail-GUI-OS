@@ -12,6 +12,7 @@
 #include <memory>
 #include <mutex>
 #include <string>
+#include <QObject>
 #include "simulator/core/iss/xtensa_iss.h"
 
 namespace esp32sim {
@@ -31,10 +32,11 @@ struct SymbolInfo;
  * - Call stack unwinding
  * - GDB remote protocol server integration
  */
-class DebugController {
+class DebugController : public QObject {
+    Q_OBJECT
 public:
-    explicit DebugController(XtensaISS* iss, MemoryModel* memory);
-    ~DebugController();
+    explicit DebugController(XtensaISS* iss, MemoryModel* memory, QObject* parent = nullptr);
+    ~DebugController() override;
 
     /**
      * @brief Initialize debug controller
@@ -212,7 +214,7 @@ signals:
 private:
     XtensaISS* iss_ = nullptr;
     MemoryModel* memory_ = nullptr;
-    std::mutex mutex_;
+    mutable std::mutex mutex_;
 
     // Breakpoints
     std::vector<Breakpoint> breakpoints_;
@@ -241,10 +243,10 @@ private:
     const char* demangleName(const char* mangled) const;
 
     // GDB server integration
-    std::unique_ptr<class GDBServer> gdb_server_;
-    bool gdb_server_running_ = false;
-    void startGDBServer(int port = 3333);
-    void stopGDBServer();
+    // std::unique_ptr<class GDBServer> gdb_server_;
+    // bool gdb_server_running_ = false;
+    // void startGDBServer(int port = 3333);
+    // void stopGDBServer();
 };
 
 } // namespace esp32sim

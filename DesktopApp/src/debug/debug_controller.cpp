@@ -5,12 +5,13 @@
 
 #include "debug/debug_controller.h"
 #include "utils/logger.h"
+#include "simulator/core/memory/memory_model.h"
 #include <cstring>
 
 namespace esp32sim {
 
-DebugController::DebugController(XtensaISS* iss, MemoryModel* memory)
-    : iss_(iss), memory_(memory) {
+DebugController::DebugController(XtensaISS* iss, MemoryModel* memory, QObject* parent)
+    : QObject(parent), iss_(iss), memory_(memory) {
 }
 
 DebugController::~DebugController() = default;
